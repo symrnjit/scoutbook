@@ -133,7 +133,7 @@ select,input[type=text],input[type=number],input[type=date],input[type=email],in
 .pshell{display:flex;flex-direction:column;flex:1;min-height:0}
 .ph{padding:18px 16px 12px;border-bottom:0}
 .ph h2{font-size:19px;letter-spacing:-.01em}
-.ptabs{position:relative;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line);padding:0 8px;background:var(--panel)}
+.ptabs{position:relative;display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--line);padding:0 8px;background:var(--panel)}
 .ptabs button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 4px 10px;border:0;background:none;color:var(--muted);font-size:12px;position:relative;transition:color .2s}
 .ptabs button svg{width:18px;height:18px;transition:transform .3s cubic-bezier(.3,1.5,.5,1)}
 .ptabs button:hover{color:var(--ink)}
@@ -142,8 +142,9 @@ select,input[type=text],input[type=number],input[type=date],input[type=email],in
 .ptabs .ld{position:absolute;top:6px;left:calc(50% + 8px);width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:0;transition:opacity .3s}
 .ptabs button.loading .ld{opacity:1;animation:blink 1s ease-in-out infinite}
 @keyframes blink{50%{opacity:.25}}
-.pind{position:absolute;bottom:-1px;left:8px;height:2px;width:calc((100% - 16px) / 4);background:var(--accent);border-radius:2px;transform:translateX(calc(var(--i,0) * 100%));transition:transform .4s cubic-bezier(.3,1.3,.5,1)}
+.pind{position:absolute;bottom:-1px;left:8px;height:2px;width:calc((100% - 16px) / 5);background:var(--accent);border-radius:2px;transform:translateX(calc(var(--i,0) * 100%));transition:transform .4s cubic-bezier(.3,1.3,.5,1)}
 .pane{padding:18px 0 28px;display:grid;gap:18px}
+.pane > *{min-width:0}
 .pane > .sec{padding:0;border:0}
 .stagger > *{animation:up .45s cubic-bezier(.2,.8,.2,1) both}
 .stagger.slide-r > *{animation-name:sr}.stagger.slide-l > *{animation-name:sl}
@@ -244,6 +245,33 @@ details.more[open] .kv{animation:up .35s both}
 .moon{display:flex;gap:14px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--panel-2);margin-top:16px}
 .moon svg{flex:none;filter:drop-shadow(0 0 6px rgba(226,232,240,.35))}
 .moon small{display:block;color:var(--muted);font-size:12px}
+/* photo planning */
+.glance{display:grid;gap:12px}
+.glance > div{display:flex;gap:12px;align-items:flex-start;font-size:13.5px}
+.glance svg{color:var(--c);flex:none;margin-top:1px}
+.glance small{display:block;color:var(--muted);font-size:11.5px}
+.ncard{display:flex;gap:14px;align-items:flex-start;padding:14px;border-radius:14px;background:var(--panel-2)}
+.ncard > .ni{width:40px;height:40px;flex:none;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--c)}
+.ncard > div:last-child{flex:1;min-width:0}
+.ncard h5{margin:0 0 2px;font-size:14px}
+.ncard p{margin:2px 0 0;font-size:12.5px;color:var(--muted)}
+.ncard .big{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)}
+.mstrip{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-size:11px;color:var(--muted)}
+.mstrip > div{display:grid;justify-items:center;gap:3px;padding:6px 0;border-radius:10px}
+.mstrip > div.dark{background:color-mix(in srgb,#16a34a 12%,transparent);color:var(--ink)}
+.hours{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.hr{flex:none;width:58px;display:grid;justify-items:center;gap:4px;padding:8px 4px;border-radius:12px;background:var(--panel-2);font-size:11.5px;scroll-snap-align:start}
+.hr.gold{box-shadow:inset 0 3px 0 #f59e0b}.hr.blue{box-shadow:inset 0 3px 0 #3b6fd8}
+.hr svg{width:18px;height:18px;color:var(--c)}
+.hr b{font-size:13px;font-variant-numeric:tabular-nums}
+.hr .w{color:var(--muted)}
+.cond{display:grid;gap:10px}
+.cond > div{display:flex;gap:10px;align-items:flex-start;font-size:13px}
+.cond .tag{flex:none;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;color:var(--c);background:color-mix(in srgb,var(--c) 15%,transparent);min-width:64px;text-align:center}
+.planner{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.planner .row b{font-variant-numeric:tabular-nums}
+.alg{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.alg span{font-size:12px;padding:2px 8px;border-radius:999px;background:var(--panel-2);border:1px solid var(--line)}
 /* light timeline */
 .tl{position:relative;height:30px;border-radius:10px;margin:18px 0 4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
 .tl input[type=range]{position:absolute;inset:0;width:100%;height:100%;margin:0;background:transparent;-webkit-appearance:none;appearance:none;cursor:ew-resize}
@@ -424,6 +452,11 @@ textarea{min-height:90px;resize:vertical}
   <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8h11a3 3 0 1 0-3-3M3 16h15a3 3 0 1 1-3 3M3 12h8"/></symbol>
   <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></symbol>
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7z"/></symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 6c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></symbol>
+  <symbol id="i-drone" viewBox="0 0 24 24"><circle cx="5" cy="5" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M7 7l3 3M17 7l-3 3M7 17l3-3M17 17l-3-3"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/></symbol>
+  <symbol id="i-fog" viewBox="0 0 24 24"><path d="M4 9h16M2 13h20M5 17h14M8 5h8"/></symbol>
+  <symbol id="i-aurora" viewBox="0 0 24 24"><path d="M3 20c2-8 5-12 9-12s6 3 9 12M6 20c1-5 3-8 6-8s5 3 6 8"/></symbol>
   <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 22v-6M7 16h10l-3-4h2l-4-6-4 6h2z"/></symbol>
 </svg>
 
@@ -552,7 +585,7 @@ const state = {
   me: null,           // [lat,lng]
   sun: { date: todayStr(), min: nowMin(), show: true },
   lb: null,
-  ptab: 'overview', ptabDir: 'r',
+  ptab: 'overview', ptabDir: 'r', face: null, kp: null,
   spot: null,         // place / viewpoint shown in the info panel
 };
 
@@ -607,7 +640,7 @@ map.on('moveend', () => { const c = map.getCenter(); pref.set('sb-view', JSON.st
 const savedFor = s => state.locations.find(l => l.spotId === s.id);
 function selectSpot(s, { pan = true } = {}) {
   if (state.mode === 'edit') cancelEdit(false);
-  if (state.spot?.id !== s.id) { const tz = tzOf(s); state.sun.date = todayIn(tz); state.sun.min = nowMinIn(tz); state.ptab = 'overview'; }
+  if (state.spot?.id !== s.id) { const tz = tzOf(s); state.sun.date = todayIn(tz); state.sun.min = nowMinIn(tz); state.ptab = 'overview'; state.face = null; }
   state.sel = null; state.spot = s; state.mode = 'view';
   if (s.kind !== 'place') placeLayer.clearLayers();
   enrich(s);
@@ -631,10 +664,12 @@ function inspectPlace(lat, lng) {
 }
 function enrich(s) {
   if (s.enriched) return; s.enriched = true;
-  s.loading = { geo: true, wx: true, wiki: true };
+  s.loading = { geo: true, wx: true, wiki: true, marine: true };
   const upd = () => { if (state.spot === s && state.mode === 'view') renderSpotDrawer(); };
   const geoP = (s.loading.geo ? fetchGeo(s) : Promise.resolve()).finally(() => { s.loading.geo = false; upd(); });
   fetchWeather(s).finally(() => { s.loading.wx = false; upd(); });
+  fetchMarine(s).finally(() => { s.loading.marine = false; upd(); });
+  getKp().then(k => { if (k && !state.kp) { state.kp = k; upd(); } });
   geoP.then(() => fetchWiki(s)).finally(() => { s.loading.wiki = false; upd(); });
 }
 async function fetchGeo(s) {
@@ -667,8 +702,8 @@ function skyQuality(h) {
 async function fetchWeather(s) {
   try {
     const u = `https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lng}&timezone=auto&forecast_days=4` +
-      `&current=temperature_2m,apparent_temperature,weather_code,cloud_cover,wind_speed_10m,wind_gusts_10m,relative_humidity_2m,visibility` +
-      `&hourly=cloud_cover,cloud_cover_low,cloud_cover_high,precipitation_probability&daily=sunrise,sunset,uv_index_max`;
+      `&current=temperature_2m,apparent_temperature,weather_code,cloud_cover,wind_speed_10m,wind_gusts_10m,wind_direction_10m,relative_humidity_2m,visibility,dew_point_2m` +
+      `&hourly=cloud_cover,cloud_cover_low,cloud_cover_mid,cloud_cover_high,precipitation_probability,temperature_2m,dew_point_2m,weather_code,wind_speed_10m,wind_gusts_10m,visibility&daily=sunrise,sunset,uv_index_max`;
     const j = await (await fetch(u)).json();
     if (j.error) throw new Error(j.reason);
     if (j.timezone && validTz(j.timezone) && j.timezone !== s.tz) {
@@ -690,6 +725,16 @@ async function fetchWeather(s) {
     const now = j.current.time;
     const next = s.wx.days.flatMap(d => [{ k: 'sunrise', t: d.rise, h: d.r }, { k: 'sunset', t: d.set, h: d.s }]).find(e => e.t > now && e.h);
     s.next = next || null;
+    // fog / mist risk around the next sunrise: small temperature–dew point spread + light wind (or low visibility)
+    const nr = s.wx.days.map(d => d.rise).find(t => t > now);
+    if (nr) {
+      const k = idx[new Date(Math.round(Date.parse(nr + ':00Z') / 36e5) * 36e5).toISOString().slice(0, 13) + ':00'];
+      if (k != null) {
+        const spread = H.temperature_2m[k] - H.dew_point_2m[k], wind = H.wind_speed_10m[k], vis = H.visibility?.[k];
+        const lvl = (vis != null && vis < 1000) || (spread <= 1.5 && wind < 10) ? 'likely' : spread <= 3 && wind < 15 ? 'possible' : 'unlikely';
+        s.fog = { lvl, t: nr.slice(11, 16), day: nr.slice(0, 10) === now.slice(0, 10) ? 'today' : 'tomorrow', spread, wind, temp: H.temperature_2m[k] };
+      }
+    }
     if (next) {
       const q = skyQuality(next.h), day = next.t.slice(0, 10) === now.slice(0, 10) ? 'today' : 'tomorrow';
       s.skyTip = `Next ${next.k} (${day} ${next.t.slice(11, 16)}): ${q.label.toLowerCase()} — ${next.h.cc}% cloud (low ${next.h.low}%, high ${next.h.high}%).`;
@@ -824,26 +869,107 @@ function drawCloudChart(host, s) {
   const out = () => { g.style.display = 'none'; tip.classList.remove('show'); };
   svg.addEventListener('pointermove', move); svg.addEventListener('pointerdown', move); svg.addEventListener('pointerleave', out);
 }
-function moonInfo(l) {
-  const tz = tzOf(l), ill = SunCalc.getMoonIllumination(sunDay(tz));
-  let rise = null, set = null, prev = null;
-  for (let m = 0; m <= 1440; m += 10) {
-    const d = sunAt(m, tz), a = SunCalc.getMoonPosition(d, l.lat, l.lng).altitude;
-    if (prev != null) { if (prev <= 0 && a > 0 && !rise) rise = d; if (prev > 0 && a <= 0 && !set) set = d; }
-    prev = a;
-  }
-  const p = ill.phase, near = v => Math.abs(p - v) < 0.035 || Math.abs(p - v) > 0.965;
-  const name = near(0) ? 'New moon' : Math.abs(p - .25) < .035 ? 'First quarter' : Math.abs(p - .5) < .035 ? 'Full moon' : Math.abs(p - .75) < .035 ? 'Last quarter'
-    : p < .25 ? 'Waxing crescent' : p < .5 ? 'Waxing gibbous' : p < .75 ? 'Waning gibbous' : 'Waning crescent';
-  return { name, frac: ill.fraction, phase: p, rise, set, tz };
-}
-function moonSvg(phase) {
+function moonSvg(phase, size = 40) {
   const R = 16, cx = 20, cy = 20, k = Math.cos(2 * Math.PI * phase), waxing = phase < .5, rx = Math.abs(k) * R;
   const outer = waxing ? 1 : 0, inner = k > 0 ? (waxing ? 0 : 1) : (waxing ? 1 : 0);
-  return `<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="${cx}" cy="${cy}" r="${R}" fill="#334155"/>
+  return `<svg width="${size}" height="${size}" viewBox="0 0 40 40" aria-hidden="true"><circle cx="${cx}" cy="${cy}" r="${R}" fill="#334155"/>
     <path d="M${cx},${cy - R} A${R},${R} 0 0 ${outer} ${cx},${cy + R} A${rx.toFixed(2)},${R} 0 0 ${inner} ${cx},${cy - R}z" fill="#e2e8f0"/></svg>`;
 }
-const PTABS = [['overview', 'Overview', 'pin'], ['light', 'Light', 'sun'], ['weather', 'Weather', 'cloud'], ['area', 'Area', 'book']];
+/* ---------- tides (Open-Meteo marine model) ---------- */
+async function fetchMarine(s) {
+  try {
+    const j = await (await fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${s.lat}&longitude=${s.lng}&hourly=sea_level_height_msl,wave_height&timezone=auto&forecast_days=3`)).json();
+    const T = j.hourly?.time || [], Lv = j.hourly?.sea_level_height_msl || [], W = j.hourly?.wave_height || [];
+    if (!Lv.some(v => v != null)) { s.marine = null; return; }
+    const off = j.utc_offset_seconds || 0;
+    const nowIso = new Date(Date.now() + off * 1000).toISOString().slice(0, 13) + ':00';
+    const i0 = Math.max(0, T.indexOf(nowIso));
+    const today = nowIso.slice(0, 10), ext = [];
+    for (let i = Math.max(1, i0); i < T.length - 1 && ext.length < 5; i++) {
+      const a = Lv[i - 1], b = Lv[i], c = Lv[i + 1]; if (a == null || b == null || c == null) continue;
+      const hi = b >= a && b > c, lo = b <= a && b < c; if (!hi && !lo) continue;
+      const den = a - 2 * b + c, dt = den ? Math.max(-.5, Math.min(.5, (a - c) / (2 * den))) : 0;
+      const iso = new Date(Date.parse(T[i] + ':00Z') + dt * 36e5).toISOString();
+      if (iso.slice(0, 16) < nowIso) continue;
+      ext.push({ hi, t: iso.slice(11, 16), day: iso.slice(0, 10) === today ? 'today' : 'tomorrow', h: b });
+    }
+    s.marine = { ext, wave: W[i0], rising: Lv[i0 + 1] > Lv[i0], lvl: Lv[i0] };
+  } catch { s.marine = null; }
+}
+/* ---------- geomagnetic Kp (NOAA SWPC) for aurora & drone GPS ---------- */
+let kpP = null;
+function getKp() {
+  return kpP ||= fetch('https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json').then(r => r.json()).then(rows => {
+    const pts = rows.map(r => Array.isArray(r) ? { t: Date.parse(r[0].replace(' ', 'T') + 'Z'), kp: +r[1] } : { t: Date.parse(r.time_tag + 'Z'), kp: +r.kp }).filter(p => isFinite(p.t) && isFinite(p.kp));
+    const now = Date.now(), past = pts.filter(p => p.t <= now), fut = pts.filter(p => p.t > now - 3 * 36e5 && p.t < now + 72 * 36e5);
+    const mx = fut.reduce((m, p) => p.kp > (m?.kp ?? -1) ? p : m, null);
+    return { now: past[past.length - 1]?.kp, max: mx?.kp, maxAt: mx?.t };
+  }).catch(() => null);
+}
+const kpNeeded = lat => { const a = Math.abs(lat); return a >= 67 ? 1 : a >= 64 ? 2 : a >= 62 ? 3 : a >= 60 ? 4 : a >= 57 ? 5 : a >= 54 ? 6 : a >= 50 ? 7 : a >= 46 ? 8 : 9; };
+/* ---------- night sky ---------- */
+function gcPos(d, lat, lng) { // Milky Way galactic centre (Sgr A*): RA 266.417°, Dec −29.008°
+  const rad = Math.PI / 180, JD = d.getTime() / 864e5 + 2440587.5;
+  const gmst = (280.46061837 + 360.98564736629 * (JD - 2451545)) % 360;
+  const H = ((gmst + lng - 266.417) % 360 + 360) % 360 * rad, dec = -29.008 * rad, ph = lat * rad;
+  const alt = Math.asin(Math.sin(ph) * Math.sin(dec) + Math.cos(ph) * Math.cos(dec) * Math.cos(H)) / rad;
+  const az = (Math.atan2(Math.sin(H), Math.cos(H) * Math.sin(ph) - Math.tan(dec) * Math.cos(ph)) / rad + 180) % 360;
+  return { alt, az };
+}
+function runs() { const out = []; let c = null; return { push(on, d) { if (on) { if (!c) c = { a: d, b: d }; else c.b = d; } else if (c) { out.push(c); c = null; } }, done() { if (c) out.push(c); return out; } }; }
+const longest = rs => rs.reduce((m, x) => !m || (x.b - x.a) > (m.b - m.a) ? x : m, null);
+const hm = ms => { const m = Math.round(ms / 6e4); return `${Math.floor(m / 60)}h ${String(m % 60).padStart(2, '0')}m`; };
+const nightCache = new WeakMap();
+function nightInfo(l) {
+  const tz = tzOf(l), key = state.sun.date + tz + l.lat + l.lng, hit = nightCache.get(l);
+  if (hit?.key === key) return hit;
+  const t0 = sunAt(720, tz).getTime(), ill = SunCalc.getMoonIllumination(sunAt(1440, tz));
+  const D = runs(), F = runs(), G = runs(); let best = null, mRise = null, mSet = null, prev = null;
+  for (let m = 0; m <= 1440; m += 10) {
+    const d = new Date(t0 + m * 6e4);
+    const sa = SunCalc.getPosition(d, l.lat, l.lng).altitude * 180 / Math.PI;
+    const mp = SunCalc.getMoonPosition(d, l.lat, l.lng), ma = mp.altitude * 180 / Math.PI;
+    if (prev != null) { if (prev <= 0 && ma > 0 && !mRise) mRise = { d, az: bearing(mp.azimuth) }; if (prev > 0 && ma <= 0 && !mSet) mSet = { d, az: bearing(mp.azimuth) }; }
+    prev = ma;
+    const dark = sa < -18, moonless = ma < 0 || ill.fraction < 0.08, g = gcPos(d, l.lat, l.lng);
+    D.push(dark, d); F.push(dark && moonless, d);
+    const gv = dark && g.alt > 10; G.push(gv, d);
+    if (gv && (!best || g.alt > best.alt)) best = { d, alt: g.alt, az: g.az, moonless };
+  }
+  const moons = Array.from({ length: 7 }, (_, k) => { const d = sunAt(1440 * k + 1320, tz), mi = SunCalc.getMoonIllumination(d); return { d, frac: mi.fraction, phase: mi.phase, lbl: new Intl.DateTimeFormat([], { weekday: 'short', timeZone: tz }).format(d) }; });
+  const res = { key, tz, ill, dark: longest(D.done()), free: longest(F.done()), gc: longest(G.done()), best, mRise, mSet, moons };
+  nightCache.set(l, res); return res;
+}
+const moonName = p => { const n = v => Math.abs(p - v) < .035 || Math.abs(p - v) > .965; return n(0) ? 'New moon' : Math.abs(p - .25) < .035 ? 'First quarter' : Math.abs(p - .5) < .035 ? 'Full moon' : Math.abs(p - .75) < .035 ? 'Last quarter' : p < .25 ? 'Waxing crescent' : p < .5 ? 'Waxing gibbous' : p < .75 ? 'Waning gibbous' : 'Waning crescent'; };
+/* ---------- shot-direction planner ---------- */
+const angDiff = (a, b) => { const d = Math.abs(a - b) % 360; return d > 180 ? 360 - d : d; };
+function faceWindows(l, face) {
+  const tz = tzOf(l), F = runs(), S = runs(), B = runs();
+  for (let m = 0; m <= 1440; m += 5) {
+    const d = sunAt(m, tz), p = SunCalc.getPosition(d, l.lat, l.lng), up = p.altitude > 0, df = angDiff(bearing(p.azimuth), face);
+    F.push(up && df >= 135, d); S.push(up && df > 45 && df < 135, d); B.push(up && df <= 45, d);
+  }
+  return { front: F.done(), side: S.done(), back: B.done() };
+}
+function alignDates(l, face) {
+  const tz = tzOf(l), base = sunAt(720, tz).getTime(), rise = [], set = [];
+  let pr = null, ps = null;
+  for (let k = 0; k < 366; k++) {
+    const t = SunCalc.getTimes(new Date(base + k * 864e5), l.lat, l.lng);
+    if (isNaN(t.sunrise) || isNaN(t.sunset)) { pr = ps = null; continue; }
+    const dr = bearing(SunCalc.getPosition(t.sunrise, l.lat, l.lng).azimuth) - face, ds = bearing(SunCalc.getPosition(t.sunset, l.lat, l.lng).azimuth) - face;
+    const wr = ((dr + 540) % 360) - 180, ws = ((ds + 540) % 360) - 180;
+    if (pr != null && Math.sign(wr) !== Math.sign(pr) && Math.abs(wr) < 5) rise.push(t.sunrise);
+    if (ps != null && Math.sign(ws) !== Math.sign(ps) && Math.abs(ws) < 5) set.push(t.sunset);
+    pr = wr; ps = ws;
+  }
+  return { rise, set };
+}
+const fmtDay = (d, tz) => d.toLocaleDateString([], { day: 'numeric', month: 'short', timeZone: tz });
+function windVerdict(g) {
+  return g < 20 ? ['Calm', '#16a34a', 'Good for drones and long exposures'] : g < 35 ? ['Breezy', '#f59e0b', 'Fly drones with care; weigh down the tripod'] : ['Windy', '#ef4444', 'Too gusty for most small drones; expect tripod shake'];
+}
+const PTABS = [['overview', 'Overview', 'pin'], ['light', 'Light', 'sun'], ['night', 'Night', 'moon'], ['weather', 'Weather', 'cloud'], ['area', 'Area', 'book']];
 function renderSpotDrawer() {
   const s = state.spot; s._seen ||= new Set();
   let shell = drawer.querySelector('.pshell');
@@ -865,7 +991,7 @@ function renderSpotDrawer() {
     <div style="flex:1;min-width:0;display:grid;gap:3px"><h2>${esc(s.name)}</h2><div class="sub">${esc(s.cat)}${dist}</div>
       ${lp ? `<div class="livechip" style="--lc:${lp.c}"><i></i><span>${esc(lp.txt)}</span></div>` : ''}</div>
     <button class="btn icon ghost" data-act="close" title="Close" aria-label="Close">${icon('x')}</button>`;
-  const busy = { overview: ld.geo, light: false, weather: ld.wx, area: ld.wiki };
+  const busy = { overview: ld.geo, light: false, night: false, weather: ld.wx || ld.marine, area: ld.wiki };
   shell.querySelectorAll('[data-ptab]').forEach((b, i) => {
     const on = b.dataset.ptab === state.ptab;
     b.classList.toggle('on', on); b.setAttribute('aria-selected', on);
@@ -878,7 +1004,7 @@ function renderSpotDrawer() {
 }
 function renderPane(s, el) {
   const ld = s.loading || {}, ex = s.extra || {}, tab = state.ptab;
-  const ready = { overview: !ld.geo || !!s.region, light: true, weather: !ld.wx, area: !ld.wiki }[tab];
+  const ready = { overview: !ld.geo || !!s.region, light: true, night: true, weather: !ld.wx, area: !ld.wiki }[tab];
   const key = tab + '|' + ready, anim = !s._seen.has(key); s._seen.add(key);
   el.className = 'pane' + (anim ? ' stagger' + (s._slide ? ' slide-' + state.ptabDir : '') : '');
   s._slide = false;
@@ -900,7 +1026,15 @@ function renderPane(s, el) {
         <div class="stat" style="--c:#a855f7">${icon('sunset')}<b>${fmtT(t.sunset, tz)}</b><small>Sunset</small></div>
       </div>
       ${ready ? `<div class="addr">${icon('home')}<div><div class="a1">${esc(parts.slice(0, 3).join(', ') || s.name)}</div><div class="muted small">${esc(s.region)}</div></div></div>` : `<div>${skel(2)}</div>`}
-      <div class="line">${icon('camera')}<div><small>Best light</small>${esc(best)}</div></div>
+      ${(() => {
+        const ni = typeof SunCalc !== 'undefined' ? nightInfo(s) : null, T = d => fmtT(d, tz), g = [];
+        g.push(['camera', '#f59e0b', 'Golden light', best]);
+        if (ni) g.push(['moon', '#7c3aed', 'Night sky', ni.dark ? `Dark ${T(ni.dark.a)}–${T(ni.dark.b)} · ` + (ni.free && ni.free.b - ni.free.a >= 18e5 ? `moon-free ${T(ni.free.a)}–${T(ni.free.b)}` : `moon ${Math.round(ni.ill.fraction * 100)}% lit`) + (ni.gc ? ' · Milky Way core up' : '') : 'No full darkness tonight (twilight all night)']);
+        if (c) { const v = windVerdict(c.wind_gusts_10m); g.push(['wind', v[1], 'Wind', `${Math.round(c.wind_speed_10m)} km/h, gusts ${Math.round(c.wind_gusts_10m)} · ${v[0]}`]); }
+        if (s.fog && s.fog.lvl !== 'unlikely') g.push(['fog', '#64748b', 'Fog / mist', `${pretty(s.fog.lvl)} around sunrise ${s.fog.day} (${s.fog.t})`]);
+        if (s.marine?.ext?.length) g.push(['wave', '#0284c7', 'Tide', s.marine.ext.slice(0, 2).map(e => `${e.hi ? 'High' : 'Low'} ${e.t}${e.day === 'tomorrow' ? ' (tmrw)' : ''}`).join(' · ')]);
+        return `<div class="glance">${g.map(([ic, col, k, v]) => `<div style="--c:${col}">${icon(ic)}<div><small>${k}</small>${esc(v)}</div></div>`).join('')}</div>`;
+      })()}
       ${(() => {
         const sc = s.next && shootScore(s.next.h);
         if (!sc) return ld.wx ? `<div class="skel" style="height:64px;width:100%;border-radius:14px"></div>` : '';
@@ -937,6 +1071,38 @@ function renderPane(s, el) {
   } else if (tab === 'light') {
     el.innerHTML = '<div class="sec" id="sunSec"></div>';
     renderSun(s);
+  } else if (tab === 'night') {
+    if (typeof SunCalc === 'undefined') { el.innerHTML = empty('moon', 'Astronomy library failed to load.'); return; }
+    const ni = nightInfo(s), T = d => fmtT(d, tz), mo = ni.ill, kp = state.kp;
+    const nightOf = new Date(sunAt(720, tz)).toLocaleDateString([], { weekday: 'short', day: 'numeric', month: 'short', timeZone: tz });
+    const need = kpNeeded(s.lat);
+    const aur = kp && kp.max != null ? (kp.max >= need ? ['Likely', '#16a34a'] : kp.max >= need - 1 ? ['Possible', '#f59e0b'] : ['Unlikely', '#94a3b8']) : null;
+    el.innerHTML = `
+      <p class="subh" style="margin:0">Night of ${esc(nightOf)} · change date in the Light tab</p>
+      <div class="ncard" style="--c:#4338ca"><div class="ni">${icon('star')}</div><div>
+        <h5>Darkness</h5>
+        ${ni.dark ? `<div class="big">${T(ni.dark.a)} → ${T(ni.dark.b)}</div><p>Full astronomical darkness · ${hm(ni.dark.b - ni.dark.a)}</p>
+          <p>${ni.free && ni.free.b - ni.free.a >= 18e5 ? `Moon-free: <b style="color:var(--ink)">${T(ni.free.a)}–${T(ni.free.b)}</b> (${hm(ni.free.b - ni.free.a)})` : `Moonlight all night (${Math.round(mo.fraction * 100)}% lit) — good for lit landscapes, poor for faint stars`}</p>`
+          : `<div class="big">No full darkness</div><p>The sun stays less than 18° below the horizon — twilight all night.</p>`}
+        <p><a href="https://www.lightpollutionmap.info/#zoom=9&lat=${s.lat.toFixed(4)}&lon=${s.lng.toFixed(4)}" target="_blank" rel="noopener">Check light pollution here →</a></p>
+      </div></div>
+      <div class="ncard" style="--c:#64748b"><div class="ni" style="background:none">${moonSvg(mo.phase, 40)}</div><div>
+        <h5>${moonName(mo.phase)} · ${Math.round(mo.fraction * 100)}% lit</h5>
+        <p>Moonrise <b style="color:var(--ink)">${ni.mRise ? `${T(ni.mRise.d)}</b> · ${compass(ni.mRise.az)} ${Math.round(ni.mRise.az)}°` : '—</b>'}</p>
+        <p>Moonset <b style="color:var(--ink)">${ni.mSet ? `${T(ni.mSet.d)}</b> · ${compass(ni.mSet.az)} ${Math.round(ni.mSet.az)}°` : '—</b>'}</p>
+      </div></div>
+      <div><p class="subh">Moon · next 7 nights</p><div class="mstrip">${ni.moons.map(m => `<div class="${m.frac < .25 ? 'dark' : ''}">${moonSvg(m.phase, 26)}<span>${esc(m.lbl)}</span><span>${Math.round(m.frac * 100)}%</span></div>`).join('')}</div>
+        <p class="foot" style="margin-top:6px">Green = darker nights (under 25% lit), best for stars and the Milky Way.</p></div>
+      <div class="ncard" style="--c:#a855f7"><div class="ni">${icon('spark')}</div><div>
+        <h5>Milky Way core</h5>
+        ${ni.gc ? `<div class="big">${T(ni.gc.a)}–${T(ni.gc.b)}</div><p>Best at ${T(ni.best.d)} · ${Math.round(ni.best.alt)}° high toward ${compass(ni.best.az)} (${Math.round(ni.best.az)}°)${ni.best.moonless ? '' : ' · moon is up'}</p>`
+          : `<div class="big">Not visible</div><p>The galactic core is below ~10° during darkness on this night. It is highest in the night sky around Mar–Sep.</p>`}
+      </div></div>
+      ${Math.abs(s.lat) >= 45 ? `<div class="ncard" style="--c:#16a34a"><div class="ni">${icon('aurora')}</div><div>
+        <h5>Aurora ${aur ? `· <span style="color:${aur[1]}">${aur[0]}</span>` : ''}</h5>
+        <p>Needs roughly Kp ${need}+ at this latitude.${kp ? ` Now Kp ${kp.now?.toFixed(1) ?? '—'} · max forecast Kp ${kp.max?.toFixed(1) ?? '—'} in the next 3 days.` : ' Loading forecast…'}</p>
+        <p><a href="https://www.swpc.noaa.gov/products/aurora-30-minute-forecast" target="_blank" rel="noopener">NOAA aurora forecast →</a></p>
+      </div></div>` : ''}`;
   } else if (tab === 'weather') {
     if (!ready) { el.innerHTML = `<div>${skel(2)}</div><div>${skel(4)}</div>`; return; }
     if (s.wxErr) { el.innerHTML = empty('cloud', 'Forecast unavailable right now.'); return; }
@@ -950,12 +1116,36 @@ function renderPane(s, el) {
         <div class="mini">${icon('drop')}<b>${c.relative_humidity_2m}%</b><small>Humidity</small></div>
         <div class="mini">${icon('eye')}<b>${isFinite(c.visibility) ? (c.visibility / 1000).toFixed(c.visibility < 10000 ? 1 : 0) : '—'}</b><small>km vis.</small></div>
       </div>
+      ${(() => {
+        const v = windVerdict(c.wind_gusts_10m), kp = state.kp, rows = [];
+        rows.push([v[0], v[1], `Wind ${Math.round(c.wind_speed_10m)} km/h from ${compass(c.wind_direction_10m ?? 0)}, gusts ${Math.round(c.wind_gusts_10m)} km/h. ${v[2]}.`]);
+        if (s.fog) rows.push([pretty(s.fog.lvl), s.fog.lvl === 'likely' ? '#0ea5e9' : s.fog.lvl === 'possible' ? '#64748b' : '#94a3b8',
+          `Fog/mist at sunrise ${s.fog.day} (${s.fog.t}): ${s.fog.lvl === 'likely' ? 'great for moody shots' : s.fog.lvl === 'possible' ? 'patchy mist possible' : 'air too dry or windy'} — temp ${Math.round(s.fog.temp)}°, dew point spread ${s.fog.spread.toFixed(1)}°.`]);
+        if (kp && kp.now != null) rows.push([kp.now >= 5 ? 'Storm' : 'GPS OK', kp.now >= 5 ? '#ef4444' : '#16a34a', `Geomagnetic Kp ${kp.now.toFixed(1)} — ${kp.now >= 5 ? 'drone GPS may be unreliable' : 'no effect on drone GPS'}.`]);
+        if (c.dew_point_2m != null && c.temperature_2m - c.dew_point_2m < 2.5) rows.push(['Dew', '#0284c7', 'Near the dew point — lens condensation likely; bring a lens heater or cloth.']);
+        return `<div><p class="subh">Shooting conditions</p><div class="cond">${rows.map(([t, col, txt]) => `<div style="--c:${col}"><span class="tag">${esc(t)}</span><span>${esc(txt)}</span></div>`).join('')}</div></div>`;
+      })()}
+      ${(() => {
+        const H = w.H, i0 = w.start, n = Math.min(24, H.time.length - i0);
+        const toD = iso => { const b = Date.parse(iso + ':00Z'); return new Date(b - tzOffsetMin(tz, new Date(b)) * 6e4); };
+        return `<div><p class="subh">Next 24 hours</p><div class="hours">${Array.from({ length: n }, (_, k) => {
+          const i = i0 + k, [hi, hc] = wxIcon(H.weather_code[i]);
+          const alt = typeof SunCalc !== 'undefined' ? SunCalc.getPosition(new Date(toD(H.time[i]).getTime() + 18e5), s.lat, s.lng).altitude * 180 / Math.PI : 99;
+          const cls = alt > -4 && alt < 6 ? 'gold' : alt >= -6 && alt <= -4 ? 'blue' : '';
+          return `<div class="hr ${cls}" style="--c:${hc}"><span class="muted">${k ? H.time[i].slice(11, 16) : 'Now'}</span>${icon(hi)}<b>${Math.round(H.temperature_2m[i])}°</b><span class="w">${Math.round(H.wind_speed_10m[i])} km/h</span><span class="w">${H.precipitation_probability[i] ? H.precipitation_probability[i] + '% 💧' : '&nbsp;'}</span></div>`;
+        }).join('')}</div><p class="foot" style="margin-top:4px">Amber top = golden-hour light, blue = blue hour.</p></div>`;
+      })()}
       <div><p class="subh">Cloud cover · next 24 hours</p><div class="viz" id="cloudViz"></div></div>
       <div><p class="subh">Sky at sunrise &amp; sunset</p><div class="days">
         ${w.days.map(dd => { const qr = skyQuality(dd.r), qs = skyQuality(dd.s); return `<div class="day"><span class="dl">${dayLbl(dd.date).replace(/,/g, '')}</span>
           <span class="q2">${icon('sunrise')}<span><span class="qd q-${qr.cls}">${dd.r ? dd.r.cc + '%' : '—'}</span> <span class="muted">${dd.rise.slice(11, 16)}</span></span><small>${qr.label}</small></span>
           <span class="q2">${icon('sunset')}<span><span class="qd q-${qs.cls}">${dd.s ? dd.s.cc + '%' : '—'}</span> <span class="muted">${dd.set.slice(11, 16)}</span></span><small>${qs.label}</small></span></div>`; }).join('')}
       </div></div>
+      ${s.marine ? `<div class="ncard" style="--c:#0284c7"><div class="ni">${icon('wave')}</div><div style="flex:1">
+        <h5>Tides &amp; sea <span class="muted small" style="font-weight:400">· modelled</span></h5>
+        <p>Now ${s.marine.rising ? 'rising ↑' : 'falling ↓'}${s.marine.wave != null ? ` · waves ${s.marine.wave.toFixed(1)} m` : ''}</p>
+        <div class="times" style="margin-top:10px">${s.marine.ext.slice(0, 4).map(e => `<div class="tm"><i style="background:${e.hi ? '#0284c7' : '#94a3b8'}"></i><div><small>${e.hi ? 'High' : 'Low'} tide · ${e.day}</small><b>${e.t}</b> <span class="muted small">${e.h >= 0 ? '+' : ''}${e.h.toFixed(1)} m</span></div></div>`).join('')}</div>
+        <p style="margin-top:10px">Model estimate, not an official tide table — check local tide times before tidal shoots.</p></div></div>` : ''}
       <p class="foot">High cloud over a clear horizon gives the best colour; thick low cloud blocks the light.</p>`;
     requestAnimationFrame(() => { const v = el.querySelector('#cloudViz'); if (v) drawCloudChart(v, s); });
   } else {
@@ -1086,7 +1276,7 @@ const drawer = $('#drawer');
 function select(id, { pan = true } = {}) {
   if (state.mode === 'edit') cancelEdit(false);
   const l = byId(id);
-  if (l && id !== state.sel) { const tz = tzOf(l); state.sun.date = todayIn(tz); state.sun.min = nowMinIn(tz); }
+  if (l && id !== state.sel) { const tz = tzOf(l); state.sun.date = todayIn(tz); state.sun.min = nowMinIn(tz); state.face = null; }
   state.sel = id; state.spot = null; state.mode = 'view'; placeLayer.clearLayers();
   renderList(); renderMarkers(); renderDrawer();
   if (l && pan) {
@@ -1234,14 +1424,39 @@ function renderSun(l) {
       ${tm('#7dd3fc', 'Solar noon', T(t.solarNoon))}
       ${tm('#94a3b8', 'Daylight', isNaN(dayLen) ? '—' : `${Math.floor(dayLen / 36e5)}h ${Math.round(dayLen % 36e5 / 6e4)}m`)}
     </div>
-    ${(() => { const mo = moonInfo(l); return `<div class="moon">${moonSvg(mo.phase)}<div><b>${mo.name}</b> <span class="muted small">· ${Math.round(mo.frac * 100)}% lit</span>
-      <small>Moonrise ${mo.rise ? T(mo.rise) : '—'} · Moonset ${mo.set ? T(mo.set) : '—'}${mo.frac < .25 ? ' · dark skies, good for stars' : mo.frac > .85 ? ' · bright moon, faint stars washed out' : ''}</small></div></div>`; })()}
+    <div class="planner">
+      <p class="subh">Shot direction</p>
+      <div class="row"><input type="range" id="faceDeg" min="0" max="355" step="5" value="${state.face ?? (Math.round(bearing(set.azimuth) / 5) * 5 % 360 || 0)}" aria-label="Camera facing direction"><b id="faceLbl" style="flex:none;min-width:86px;text-align:right"></b></div>
+      <div id="faceOut" style="margin-top:12px"></div>
+      <p class="foot" style="margin-top:10px">Set which way the camera points (green line on the map). Shows when your subject is front-lit, side-lit or backlit on this date, and the dates the sun rises or sets right along your line of view.</p>
+    </div>
     <p class="foot" style="margin-top:14px">Times in ${esc(tz.replace(/_/g, ' '))}${tz === DEVICE_TZ ? ' (your device)' : ''}. Drag the timeline to see the sun's position and shadows.</p>`;
   $('#sunMin').oninput = e => { state.sun.min = +e.target.value; updateSunNow(l); };
   $('#sunDate').onchange = e => { if (e.target.value) { state.sun.date = e.target.value; renderSun(l); } };
   $('#sunNow').onclick = () => { state.sun.date = todayIn(tz); state.sun.min = nowMinIn(tz); renderSun(l); };
   $('#sunShow').onchange = e => { state.sun.show = e.target.checked; drawSun(); };
+  if (state.face == null) state.face = +$('#faceDeg').value;
+  let ft; $('#faceDeg').oninput = e => { state.face = +e.target.value; updateFace(l, true); clearTimeout(ft); ft = setTimeout(() => updateFace(l), 120); };
+  updateFace(l);
   updateSunNow(l);
+}
+function updateFace(l, quick = false) {
+  const out = $('#faceOut'), lbl = $('#faceLbl'); if (!out) return;
+  const f = state.face, tz = tzOf(l), T = d => fmtT(d, tz);
+  lbl.textContent = `${f}° ${compass(f)}`;
+  drawSun();
+  if (quick && out.dataset.f) return; // keep dragging smooth; full recalculation follows shortly
+  out.dataset.f = f;
+  const w = faceWindows(l, f), a = alignDates(l, f);
+  const fmtRuns = rs => rs.length ? rs.map(x => `${T(x.a)}–${T(x.b)}`).join(', ') : '—';
+  const dates = (ds, k) => ds.length ? `<div class="alg">${ds.slice(0, 4).map(d => `<span>${fmtDay(d, tz)}</span>`).join('')}</div>` : `<p class="foot" style="margin:2px 0 0">Sun never ${k}s in this direction here</p>`;
+  out.innerHTML = `<div class="times">
+      ${`<div class="tm"><i style="background:#16a34a"></i><div><small>Front-lit · sun behind you</small><b>${fmtRuns(w.front)}</b></div></div>`}
+      ${`<div class="tm"><i style="background:#0ea5e9"></i><div><small>Side-lit · texture &amp; depth</small><b>${fmtRuns(w.side)}</b></div></div>`}
+      ${`<div class="tm"><i style="background:#ef4444"></i><div><small>Backlit · silhouettes, flare</small><b>${fmtRuns(w.back)}</b></div></div>`}
+      <div class="tm"><i style="background:#f59e0b"></i><div><small>Sun rises in this direction</small>${dates(a.rise, 'rise')}</div></div>
+      <div class="tm"><i style="background:#a855f7"></i><div><small>Sun sets in this direction</small>${dates(a.set, 'set')}</div></div>
+    </div>`;
 }
 function updateSunNow(l) {
   const el = $('#sunReadout'); if (!el) return;
@@ -1297,6 +1512,11 @@ function drawSun() {
   };
   ray(t.sunrise, '#e0a100', '6 6');
   ray(t.sunset, '#a855f7', '6 6');
+  if (state.face != null && (!state.spot || state.ptab === 'light')) {
+    const f = state.face;
+    L.polyline([[l.lat, l.lng], dest(l.lat, l.lng, f, R * 1.2)], { color: '#16a34a', weight: 3.5, interactive: false }).addTo(sunLayer);
+    for (const o of [-25, 25]) L.polyline([[l.lat, l.lng], dest(l.lat, l.lng, f + o, R * 1.05)], { color: '#16a34a', weight: 1.5, dashArray: '3 5', opacity: .8, interactive: false }).addTo(sunLayer);
+  }
   const at = sunAt(state.sun.min, tz), p = SunCalc.getPosition(at, l.lat, l.lng);
   if (p.altitude > 0) {
     ray(at, '#ea580c');
