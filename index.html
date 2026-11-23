@@ -293,7 +293,10 @@ details.more[open] .kv{animation:up .35s both}
 @keyframes ring{from{transform:scale(.2);opacity:.9}to{transform:scale(1.4);opacity:0}}
 @media (prefers-reduced-motion: reduce){.gauge.go .val,.hero-in,.livechip i,.stagger > *,.pind,.ptabs .ld,.ani,.ani-pop,.pin.drop,.pulse,.skel,.pin.temp{animation:none}}
 .callout{background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:9px 11px;font-size:13px}
-.me-dot{width:16px;height:16px;border-radius:50%;background:#2563eb;border:3px solid #fff;box-shadow:0 0 0 6px rgba(37,99,235,.25)}
+.me-dot{position:relative;width:18px;height:18px;border-radius:50%;background:#2563eb;border:3px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.35)}
+.me-dot::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:2px solid #2563eb;animation:mering 2s ease-out infinite}
+@keyframes mering{from{transform:scale(1);opacity:.8}to{transform:scale(2.6);opacity:0}}
+@media (prefers-reduced-motion: reduce){.me-dot::after{animation:none}}
 .leaflet-tooltip.lbl{font-weight:600}
 
 /* Drawer */
@@ -599,6 +602,7 @@ map.on('click', e => {
 });
 map.on('dblclick', () => clearTimeout(clickT));
 map.on('zoomend', () => drawSun());
+map.on('moveend', () => { const c = map.getCenter(); pref.set('sb-view', JSON.stringify([+c.lat.toFixed(5), +c.lng.toFixed(5), map.getZoom()])); });
 
 const savedFor = s => state.locations.find(l => l.spotId === s.id);
 function selectSpot(s, { pan = true } = {}) {
@@ -643,7 +647,10 @@ async function fetchGeo(s) {
     if (s.kind === 'place' || /^Unnamed/.test(s.name)) s.name = nm;
     s.address ||= j.display_name || '';
     s.region ||= [a.city || a.town || a.village || a.hamlet || a.municipality || a.county, a.state, a.country].filter(Boolean).join(', ');
-    if (s.kind === 'place' && j.category) s.cat = ['boundary', 'place'].includes(j.category) ? `Area · ${pretty(j.addresstype || j.type)}` : `${pretty(j.category)} · ${pretty(j.type)}`;
+    const trivial = j.category === 'emergency' || ['bench', 'waste_basket', 'vending_machine', 'bicycle_parking', 'post_box', 'telephone', 'drinking_water', 'recycling', 'street_lamp', 'parking_entrance', 'atm', 'charging_station', 'car_sharing', 'defibrillator', 'fire_hydrant'].includes(j.type);
+    if (s.kind === 'place' && j.category) s.cat = trivial ? (a.road ? 'Street' : 'Map location')
+      : ['boundary', 'place'].includes(j.category) ? `Area · ${pretty(j.addresstype || j.type)}` : `${pretty(j.category)} · ${pretty(j.type)}`;
+    if (s.kind === 'place' && trivial && j.name && a.road) s.name = a.road;
     s.extra = j.extratags || {};
     if (s.extra.ele && !s.ele) s.ele = s.extra.ele;
     s.osmRef = j.osm_type && j.osm_id ? `${j.osm_type}/${j.osm_id}` : '';
@@ -847,7 +854,8 @@ function renderSpotDrawer() {
     shell = drawer.querySelector('.pshell');
   }
   const ld = s.loading || {}, [pic, pc] = placeIcon(s);
-  const dist = state.me ? ' · ' + fmtDist(haversine(state.me, [s.lat, s.lng])) + ' away' : '';
+  const km = state.me ? haversine(state.me, [s.lat, s.lng]) : null;
+  const dist = km == null ? '' : km < 0.03 ? ' · You are here' : ' · ' + fmtDist(km) + ' away';
   const firstHead = !s._seen.has('head'); s._seen.add('head');
   const ph = shell.querySelector('.ph'); ph.style.setProperty('--c', pc);
   const img = heroImg(s), lp = lightPhase(s);
@@ -1558,16 +1566,33 @@ $('#placeResults').onclick = e => {
 document.addEventListener('click', e => { if (!e.target.closest('.place')) $('#placeResults').hidden = true; });
 
 /* ---------- geolocation ---------- */
-function locate(then) {
-  if (!navigator.geolocation) return toast('Geolocation not supported');
-  toast('Finding your location…');
+let meAcc = null, meWatch = null;
+function setMe(pos) {
+  state.me = [pos.coords.latitude, pos.coords.longitude];
+  if (!meMarker) meMarker = L.marker(state.me, { icon: L.divIcon({ className: 'pin-wrap', html: '<div class="me-dot"></div>', iconSize: [18, 18], iconAnchor: [9, 9] }), interactive: false, zIndexOffset: -100, keyboard: false }).addTo(map);
+  else meMarker.setLatLng(state.me);
+  const acc = Math.min(pos.coords.accuracy || 0, 2000);
+  if (!meAcc) meAcc = L.circle(state.me, { radius: acc, color: '#2563eb', weight: 1, opacity: .4, fillOpacity: .08, interactive: false }).addTo(map);
+  else meAcc.setLatLng(state.me).setRadius(acc);
+}
+function startWatch() {
+  if (meWatch != null || !navigator.geolocation) return;
+  let last = 0;
+  meWatch = navigator.geolocation.watchPosition(pos => {
+    setMe(pos);
+    if (Date.now() - last > 15000) { last = Date.now(); renderList(); } // keep distances fresh without constant re-rendering
+  }, () => {}, { enableHighAccuracy: true, maximumAge: 10000 });
+}
+function locate(then, { quiet = false } = {}) {
+  if (!navigator.geolocation) { if (!quiet) toast('Location is not supported on this device'); return; }
+  if (!quiet) toast('Finding your location…');
   navigator.geolocation.getCurrentPosition(pos => {
-    state.me = [pos.coords.latitude, pos.coords.longitude];
-    if (meMarker) meMarker.remove();
-    meMarker = L.marker(state.me, { icon: L.divIcon({ className: 'pin-wrap', html: '<div class="me-dot"></div>', iconSize: [16, 16], iconAnchor: [8, 8] }), interactive: false, zIndexOffset: -100 }).addTo(map);
+    setMe(pos); startWatch();
     renderList(); if (state.mode === 'view' && (state.sel || state.spot)) renderDrawer();
-    then ? then(state.me) : map.flyTo(state.me, Math.max(map.getZoom(), 14), { duration: .5 });
-  }, err => toast('Location unavailable: ' + err.message), { enableHighAccuracy: true, timeout: 12000 });
+    then ? then(state.me) : map.flyTo(state.me, Math.max(map.getZoom(), 15), { duration: .6 });
+  }, err => {
+    toast(err.code === 1 ? 'Location access is blocked — allow it in your browser/site settings to start at your position' : 'Could not get your location: ' + err.message);
+  }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 });
 }
 $('#btnLocate').onclick = () => locate();
 
@@ -1708,8 +1733,27 @@ addEventListener('offline', () => toast('You are offline — saved locations and
   state.locations.forEach(l => { l.photos ||= []; l.tags ||= []; l.contact ||= {}; });
   renderAll();
   const hm = /^#@(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$/.exec(location.hash);
-  if (hm && Math.abs(+hm[1]) <= 90 && Math.abs(+hm[2]) <= 180) { map.setView([+hm[1], +hm[2]], 15); inspectPlace(+hm[1], +hm[2]); }
-  else if (state.locations.length) fitAll(); else map.setView([30, 10], 2);
+  const shared = hm && Math.abs(+hm[1]) <= 90 && Math.abs(+hm[2]) <= 180;
+  if (shared) { map.setView([+hm[1], +hm[2]], 15); inspectPlace(+hm[1], +hm[2]); }
+  else {
+    // show something immediately (last view, saved locations or the world), then jump to the user's position
+    let last = null; try { last = JSON.parse(pref.get('sb-view')); } catch {}
+    if (Array.isArray(last) && last.length === 3 && last.every(isFinite)) map.setView([last[0], last[1]], last[2]);
+    else if (state.locations.length) fitAll(); else map.setView([30, 10], 2);
+  }
+  // Ask for location on start. A shared link keeps its place; otherwise open the info panel at the user's position.
+  let perm = 'prompt';
+  try { perm = (await navigator.permissions.query({ name: 'geolocation' })).state; } catch {}
+  if (perm === 'denied') toast('Location is blocked — allow it in your browser/site settings to start at your position');
+  else {
+    const t0 = Date.now();
+    locate(me => {
+      if (shared) return;
+      const busy = state.spot || state.sel || state.mode === 'edit' || state.adding; // user already started doing something
+      if (busy && Date.now() - t0 > 1500) return;
+      map.setView(me, 15); inspectPlace(me[0], me[1]);
+    }, { quiet: shared });
+  }
   if (typeof SunCalc === 'undefined') console.warn('SunCalc failed to load');
 })();
 })();
