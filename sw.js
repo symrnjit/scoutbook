@@ -2,7 +2,7 @@
 // - App shell & libraries: cached on install, served cache-first (page itself network-first so updates arrive)
 // - Map tiles: cache-first, capped, so areas you've viewed work offline
 // - Data APIs (place info, weather, Wikipedia): network-first, falling back to the last cached answer
-const VERSION = 'scoutbook-v3';
+const VERSION = 'scoutbook-v5';
 const SHELL = `${VERSION}-shell`, TILES = `${VERSION}-tiles`, DATA = `${VERSION}-data`;
 const SHELL_FILES = [
   './', './index.html', './manifest.webmanifest',

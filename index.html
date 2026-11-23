@@ -133,8 +133,8 @@ select,input[type=text],input[type=number],input[type=date],input[type=email],in
 .pshell{display:flex;flex-direction:column;flex:1;min-height:0}
 .ph{padding:18px 16px 12px;border-bottom:0}
 .ph h2{font-size:19px;letter-spacing:-.01em}
-.ptabs{position:relative;display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--line);padding:0 8px;background:var(--panel)}
-.ptabs button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 4px 10px;border:0;background:none;color:var(--muted);font-size:12px;position:relative;transition:color .2s}
+.ptabs{position:relative;display:grid;grid-template-columns:repeat(6,1fr);border-bottom:1px solid var(--line);padding:0 8px;background:var(--panel)}
+.ptabs button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 2px 10px;min-width:0;border:0;background:none;color:var(--muted);font-size:12px;position:relative;transition:color .2s}
 .ptabs button svg{width:18px;height:18px;transition:transform .3s cubic-bezier(.3,1.5,.5,1)}
 .ptabs button:hover{color:var(--ink)}
 .ptabs button.on{color:var(--accent);font-weight:600}
@@ -142,7 +142,7 @@ select,input[type=text],input[type=number],input[type=date],input[type=email],in
 .ptabs .ld{position:absolute;top:6px;left:calc(50% + 8px);width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:0;transition:opacity .3s}
 .ptabs button.loading .ld{opacity:1;animation:blink 1s ease-in-out infinite}
 @keyframes blink{50%{opacity:.25}}
-.pind{position:absolute;bottom:-1px;left:8px;height:2px;width:calc((100% - 16px) / 5);background:var(--accent);border-radius:2px;transform:translateX(calc(var(--i,0) * 100%));transition:transform .4s cubic-bezier(.3,1.3,.5,1)}
+.pind{position:absolute;bottom:-1px;left:8px;height:2px;width:calc((100% - 16px) / 6);background:var(--accent);border-radius:2px;transform:translateX(calc(var(--i,0) * 100%));transition:transform .4s cubic-bezier(.3,1.3,.5,1)}
 .pane{padding:18px 0 28px;display:grid;gap:18px}
 .pane > *{min-width:0}
 .pane > .sec{padding:0;border:0}
@@ -272,6 +272,27 @@ details.more[open] .kv{animation:up .35s both}
 .planner .row b{font-variant-numeric:tabular-nums}
 .alg{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
 .alg span{font-size:12px;padding:2px 8px;border-radius:999px;background:var(--panel-2);border:1px solid var(--line)}
+.calb{padding:2px 6px !important;margin-left:4px;vertical-align:middle;color:var(--accent)}
+.calb svg{width:15px;height:15px}
+.gform{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:8px}
+.gform label{display:grid;gap:4px;font-size:11.5px;color:var(--muted)}
+.gform input,.gform select{padding:7px 8px}
+.tcard{margin-top:12px;padding:12px;border-radius:12px;border:1px solid color-mix(in srgb,#16a34a 40%,var(--line));background:color-mix(in srgb,#16a34a 7%,transparent);display:grid;gap:8px;font-size:13px}
+.tcard .row label{font-size:12px;color:var(--muted)}
+.lu{display:grid;gap:6px;margin-top:4px}
+.lu > div{display:flex;align-items:center;gap:10px;font-size:13px;padding:7px 10px;border-radius:10px;background:var(--panel-2)}
+.lu > div > span:nth-child(2){flex:1;min-width:0}
+.lu b{font-variant-numeric:tabular-nums}
+body.picking #map{cursor:crosshair}
+@media (max-width:760px){body.picking .drawer{transform:translateY(105%)}}
+.nights{display:grid;gap:6px}
+.night{display:grid;grid-template-columns:62px 1fr auto;gap:10px;align-items:center;padding:9px 12px;border-radius:12px;background:var(--panel-2);font-size:12.5px}
+.night.best{box-shadow:inset 0 0 0 1.5px #16a34a}
+.night .sc{font-weight:700;font-variant-numeric:tabular-nums;color:var(--c)}
+.cloudrow{display:flex;gap:3px;align-items:flex-end;height:46px;margin-top:8px}
+.cloudrow > i{flex:1;min-width:4px;border-radius:3px 3px 1px 1px;background:var(--c);opacity:.85}
+.cloudrow-l{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);margin-top:3px}
+.plan{padding:12px;border-radius:12px;background:color-mix(in srgb,var(--accent) 8%,transparent);border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));font-size:13px;display:grid;gap:4px}
 /* light timeline */
 .tl{position:relative;height:30px;border-radius:10px;margin:18px 0 4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
 .tl input[type=range]{position:absolute;inset:0;width:100%;height:100%;margin:0;background:transparent;-webkit-appearance:none;appearance:none;cursor:ew-resize}
@@ -457,6 +478,9 @@ textarea{min-height:90px;resize:vertical}
   <symbol id="i-drone" viewBox="0 0 24 24"><circle cx="5" cy="5" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M7 7l3 3M17 7l-3 3M7 17l3-3M17 17l-3-3"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/></symbol>
   <symbol id="i-fog" viewBox="0 0 24 24"><path d="M4 9h16M2 13h20M5 17h14M8 5h8"/></symbol>
   <symbol id="i-aurora" viewBox="0 0 24 24"><path d="M3 20c2-8 5-12 9-12s6 3 9 12M6 20c1-5 3-8 6-8s5 3 6 8"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></symbol>
+  <symbol id="i-lens" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v5M21 12h-5M12 21v-5M3 12h5"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></symbol>
   <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 22v-6M7 16h10l-3-4h2l-4-6-4 6h2z"/></symbol>
 </svg>
 
@@ -500,7 +524,8 @@ textarea{min-height:90px;resize:vertical}
       <button class="btn icon" id="btnLocate" title="My location" aria-label="My location"><svg class="i"><use href="#i-locate"/></svg></button>
       <button class="btn" id="btnViewpoints" title="Find viewpoints in the visible map area (OpenStreetMap)"><svg class="i"><use href="#i-camera"/></svg><span>Viewpoints here</span></button>
     </div>
-    <div class="banner" id="addBanner" hidden><svg class="i"><use href="#i-pin"/></svg> Tap the map to drop a pin <button id="addHere">Use my location</button><button id="addCancel">Cancel</button></div>
+    <div class="banner" id="pickBanner" hidden><svg class="i"><use href="#i-target"/></svg> Tap the landmark to line up <button id="pickCancel">Cancel</button></div>
+    <div class="banner" id="addBanner" hidden><svg class="i"><use href="#i-pin"/></svg> Tap the map to drop a pin <button id="addHere">Use my location</button><button id="addPhoto">From photo</button><button id="addCancel">Cancel</button></div>
   </section>
 
   <aside class="drawer" id="drawer" aria-label="Location details"></aside>
@@ -521,6 +546,7 @@ textarea{min-height:90px;resize:vertical}
     <button class="btn sm" id="lbClose">Close</button></div>
 </div>
 <div class="toast" id="toast"></div>
+<input type="file" id="exifFile" accept="image/jpeg,image/*" hidden>
 <input type="file" id="photoFile" accept="image/*" multiple hidden>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -585,7 +611,7 @@ const state = {
   me: null,           // [lat,lng]
   sun: { date: todayStr(), min: nowMin(), show: true },
   lb: null,
-  ptab: 'overview', ptabDir: 'r', face: null, kp: null,
+  ptab: 'overview', ptabDir: 'r', face: null, kp: null, picking: null,
   spot: null,         // place / viewpoint shown in the info panel
 };
 
@@ -628,7 +654,8 @@ map.on('click', e => {
   clearTimeout(clickT);
   clickT = setTimeout(() => {
     const { lat, lng } = e.latlng;
-    if (state.adding) startNew(lat, lng);
+    if (state.picking) setTarget(lat, lng);
+    else if (state.adding) startNew(lat, lng);
     else if (state.mode === 'edit') { if (tempMarker) tempMarker.setLatLng([lat, lng]); setCoordInputs(lat, lng); }
     else inspectPlace(lat, lng);
   }, 250);
@@ -670,6 +697,8 @@ function enrich(s) {
   fetchWeather(s).finally(() => { s.loading.wx = false; upd(); });
   fetchMarine(s).finally(() => { s.loading.marine = false; upd(); });
   getKp().then(k => { if (k && !state.kp) { state.kp = k; upd(); } });
+  fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${s.lat}&longitude=${s.lng}&current=pm2_5,aerosol_optical_depth,dust,european_aqi,us_aqi&timezone=auto`)
+    .then(r => r.json()).then(j => { s.air = j.current || null; upd(); }).catch(() => {});
   geoP.then(() => fetchWiki(s)).finally(() => { s.loading.wiki = false; upd(); });
 }
 async function fetchGeo(s) {
@@ -679,13 +708,15 @@ async function fetchGeo(s) {
     if (j.error) { if (s.kind === 'place') { s.name = 'Unnamed location'; s.cat = 'Remote area / water'; } return; }
     const nm = j.name || a.tourism || a.amenity || a.leisure || a.natural || a.historic || a.building ||
       (a.road ? [a.house_number, a.road].filter(Boolean).join(' ') : '') || a.hamlet || a.village || a.suburb || a.town || a.city || a.county || 'Dropped pin';
-    if (s.kind === 'place' || /^Unnamed/.test(s.name)) s.name = nm;
+    const nm2 = j.category === 'highway' && /^[\w-]{1,6}$/.test(nm) && /\d/.test(nm) ? (a.village || a.town || a.hamlet || a.suburb || a.city || `Road ${nm}`) : nm;
+    if (s.kind === 'place' || /^Unnamed/.test(s.name)) s.name = nm2;
     s.address ||= j.display_name || '';
     s.region ||= [a.city || a.town || a.village || a.hamlet || a.municipality || a.county, a.state, a.country].filter(Boolean).join(', ');
     const trivial = j.category === 'emergency' || ['bench', 'waste_basket', 'vending_machine', 'bicycle_parking', 'post_box', 'telephone', 'drinking_water', 'recycling', 'street_lamp', 'parking_entrance', 'atm', 'charging_station', 'car_sharing', 'defibrillator', 'fire_hydrant'].includes(j.type);
     if (s.kind === 'place' && j.category) s.cat = trivial ? (a.road ? 'Street' : 'Map location')
       : ['boundary', 'place'].includes(j.category) ? `Area · ${pretty(j.addresstype || j.type)}` : `${pretty(j.category)} · ${pretty(j.type)}`;
     if (s.kind === 'place' && trivial && j.name && a.road) s.name = a.road;
+    s.cc = (a.country_code || '').toLowerCase();
     s.extra = j.extratags || {};
     if (s.extra.ele && !s.ele) s.ele = s.extra.ele;
     s.osmRef = j.osm_type && j.osm_id ? `${j.osm_type}/${j.osm_id}` : '';
@@ -969,7 +1000,226 @@ const fmtDay = (d, tz) => d.toLocaleDateString([], { day: 'numeric', month: 'sho
 function windVerdict(g) {
   return g < 20 ? ['Calm', '#16a34a', 'Good for drones and long exposures'] : g < 35 ? ['Breezy', '#f59e0b', 'Fly drones with care; weigh down the tripod'] : ['Windy', '#ef4444', 'Too gusty for most small drones; expect tripod shake'];
 }
-const PTABS = [['overview', 'Overview', 'pin'], ['light', 'Light', 'sun'], ['night', 'Night', 'moon'], ['weather', 'Weather', 'cloud'], ['area', 'Area', 'book']];
+/* ---------- gear ---------- */
+const SENSORS = {
+  ff: { n: 'Full frame', w: 36, h: 24, coc: .03, pitch: 5.9, crop: 1 },
+  apsc: { n: 'APS-C (1.5×)', w: 23.5, h: 15.6, coc: .02, pitch: 3.9, crop: 1.53 },
+  canon: { n: 'APS-C Canon (1.6×)', w: 22.3, h: 14.9, coc: .019, pitch: 3.2, crop: 1.6 },
+  mft: { n: 'Micro Four Thirds', w: 17.3, h: 13, coc: .015, pitch: 3.3, crop: 2 },
+  one: { n: '1-inch', w: 13.2, h: 8.8, coc: .011, pitch: 2.4, crop: 2.7 },
+  phone: { n: 'Phone (35mm-equiv. focal)', w: 36, h: 24, coc: .03, pitch: 5.9, crop: 1 },
+};
+state.gear = (() => { try { return { sensor: 'ff', focal: 24, ap: 8, focus: 10, ...JSON.parse(pref.get('sb-gear') || '{}') }; } catch { return { sensor: 'ff', focal: 24, ap: 8, focus: 10 }; } })();
+const saveGear = () => pref.set('sb-gear', JSON.stringify(state.gear));
+const sensorOf = g => SENSORS[g.sensor] || SENSORS.ff;
+const fov = (g, dim = 'w') => 2 * Math.atan(sensorOf(g)[dim] / (2 * g.focal)) * 180 / Math.PI;
+const fmtM = m => !isFinite(m) ? '∞' : m >= 1000 ? (m / 1000).toFixed(1) + ' km' : m >= 10 ? Math.round(m) + ' m' : m.toFixed(1) + ' m';
+const focalFor = (g, angleDeg, dim = 'w') => sensorOf(g)[dim] / (2 * Math.tan(angleDeg * Math.PI / 360));
+/* ---------- line up sun/moon with a landmark ---------- */
+const targets = new Map(); // place/location id -> { lat, lng, h, eleC, eleT }
+function bearingTo(a, b) {
+  const r = Math.PI / 180, y = Math.sin((b[1] - a[1]) * r) * Math.cos(b[0] * r);
+  const x = Math.cos(a[0] * r) * Math.sin(b[0] * r) - Math.sin(a[0] * r) * Math.cos(b[0] * r) * Math.cos((b[1] - a[1]) * r);
+  return (Math.atan2(y, x) / r + 360) % 360;
+}
+function tgtGeom(l, tg) {
+  const d = haversine([l.lat, l.lng], [tg.lat, tg.lng]) * 1000, brg = bearingTo([l.lat, l.lng], [tg.lat, tg.lng]);
+  const drop = 0.87 * d * d / (2 * 6371000); // earth curvature less refraction
+  const ang = tg.eleC != null && tg.eleT != null ? Math.atan2(tg.eleT + (tg.h || 0) - drop - (tg.eleC + 1.6), d) * 180 / Math.PI : null;
+  return { d, brg, ang };
+}
+function startPick(l) {
+  state.picking = l.id; document.body.classList.add('picking'); $('#pickBanner').hidden = false;
+  toast('Tap the landmark on the map');
+}
+function stopPick() { state.picking = null; document.body.classList.remove('picking'); $('#pickBanner').hidden = true; }
+$('#pickCancel').onclick = stopPick;
+async function setTarget(lat, lng) {
+  const l = state.spot && state.spot.id === state.picking ? state.spot : byId(state.picking);
+  stopPick(); if (!l) return;
+  const tg = { lat, lng, h: 0, eleC: null, eleT: null };
+  targets.set(l.id, tg);
+  const g = tgtGeom(l, tg); state.face = Math.round(g.brg);
+  rerenderLight();
+  try {
+    const j = await (await fetch(`https://api.open-meteo.com/v1/elevation?latitude=${l.lat},${lat}&longitude=${l.lng},${lng}`)).json();
+    [tg.eleC, tg.eleT] = j.elevation || [];
+  } catch {}
+  rerenderLight();
+}
+function rerenderLight() { if (state.spot) renderSpotDrawer(); else if (state.sel) renderDrawer(); }
+function lineUp(l, tg) {
+  const g = tgtGeom(l, tg); if (g.ang == null) return null;
+  const res = [], step = 10 * 6e4, start = Date.now() - 36e5, N = 90 * 144, deg = 180 / Math.PI;
+  for (const body of ['sun', 'moon']) {
+    const pos = t => body === 'sun' ? SunCalc.getPosition(new Date(t), l.lat, l.lng) : SunCalc.getMoonPosition(new Date(t), l.lat, l.lng);
+    const dOf = p => ((bearing(p.azimuth) - g.brg + 540) % 360) - 180;
+    let prev = null;
+    for (let k = 0; k <= N; k++) {
+      const t = start + k * step, p = pos(t), d = dOf(p), alt = p.altitude * deg;
+      if (prev && Math.sign(d) !== Math.sign(prev.d) && Math.abs(d - prev.d) < 40 && Math.max(alt, prev.alt) > -2) {
+        let a = prev.t, b = t, da = prev.d;
+        for (let i = 0; i < 9; i++) { const m = (a + b) / 2, dm = dOf(pos(m)); if (Math.sign(dm) === Math.sign(da)) { a = m; da = dm; } else b = m; }
+        const tc = (a + b) / 2, altc = pos(tc).altitude * deg;
+        if (altc > -1) res.push({ body, t: new Date(tc), alt: altc, off: altc - g.ang, frac: body === 'moon' ? SunCalc.getMoonIllumination(new Date(tc)).fraction : null });
+      }
+      prev = { t, d, alt };
+    }
+  }
+  const hits = res.filter(x => Math.abs(x.off) <= 0.8).sort((a, b) => a.t - b.t);
+  const near = res.filter(x => Math.abs(x.off) > 0.8 && Math.abs(x.off) < 6).sort((a, b) => Math.abs(a.off) - Math.abs(b.off)).slice(0, 3);
+  return { g, hits, near };
+}
+/* ---------- calendar (.ics) ---------- */
+const calReg = new Map(); let calSeq = 0;
+function calBtn(title, a, b, l, desc = '') {
+  if (!(a instanceof Date) || isNaN(a)) return '';
+  const k = 'c' + (++calSeq); calReg.set(k, { title, a, b: b instanceof Date && !isNaN(b) ? b : new Date(a.getTime() + 30 * 6e4), lat: l.lat, lng: l.lng, place: l.name, desc });
+  if (calReg.size > 300) calReg.delete(calReg.keys().next().value);
+  return `<button class="btn ghost sm calb" data-cal="${k}" title="Add to calendar" aria-label="Add ${esc(title)} to calendar">${icon('cal')}</button>`;
+}
+function downloadIcs(ev) {
+  const f = d => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  const escI = t => String(t || '').replace(/[\\,;]/g, m => '\\' + m).replace(/\n/g, '\\n');
+  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Scoutbook//EN', 'BEGIN:VEVENT', `UID:${uid()}@scoutbook`, `DTSTAMP:${f(new Date())}`,
+    `DTSTART:${f(ev.a)}`, `DTEND:${f(ev.b)}`, `SUMMARY:${escI(ev.title + ' — ' + ev.place)}`, `LOCATION:${escI(ev.place)}`, `GEO:${ev.lat.toFixed(5)};${ev.lng.toFixed(5)}`,
+    `DESCRIPTION:${escI((ev.desc ? ev.desc + '\n' : '') + `https://www.google.com/maps/search/?api=1&query=${ev.lat},${ev.lng}`)}`,
+    'BEGIN:VALARM', 'TRIGGER:-PT60M', 'ACTION:DISPLAY', `DESCRIPTION:${escI(ev.title)}`, 'END:VALARM', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
+  a.download = (ev.title.replace(/[^\w]+/g, '-').toLowerCase() || 'event') + '.ics'; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000); toast('Calendar event downloaded — open it to add');
+}
+function nextGolden(s) {
+  const now = Date.now(), ev = [];
+  for (const off of [0, 1, 2]) {
+    const t = SunCalc.getTimes(new Date(now + off * 864e5), s.lat, s.lng);
+    ev.push([t.sunrise, isNaN(t.goldenHourEnd) ? t.sunset : t.goldenHourEnd, 'Morning golden hour'], [isNaN(t.goldenHour) ? t.sunrise : t.goldenHour, t.sunset, 'Evening golden hour']);
+  }
+  return ev.filter(e => !isNaN(e[0]) && !isNaN(e[1]) && e[1] > now).sort((a, b) => a[0] - b[0])[0];
+}
+/* ---------- night sky forecast (clouds during darkness) ---------- */
+function nightForecast(s, date) {
+  const w = s.wx; if (!w?.H) return null;
+  const tz = tzOf(s), H = w.H, idx = {}; H.time.forEach((t, i) => idx[t] = i);
+  const ill = SunCalc.getMoonIllumination(sunAtD(date, 1440, tz)).fraction;
+  let dark = 0, free = 0, cl = 0, low = 0, pp = 0, n = 0, first = null, last = null; const hours = [];
+  for (let m = 720; m <= 2160; m += 15) {
+    const d = sunAtD(date, m, tz), sa = SunCalc.getPosition(d, s.lat, s.lng).altitude * 180 / Math.PI; if (sa >= -18) continue;
+    const ma = SunCalc.getMoonPosition(d, s.lat, s.lng).altitude; dark++; if (ma < 0 || ill < .08) free++;
+    first ||= d; last = d;
+    const i = idx[isoHour(d, tz)]; if (i == null) continue;
+    cl += H.cloud_cover[i]; low += H.cloud_cover_low[i]; pp += H.precipitation_probability?.[i] || 0; n++;
+    if (m % 60 === 0) hours.push({ t: H.time[i].slice(11, 16), cc: H.cloud_cover[i] });
+  }
+  if (!dark) return { date, none: true };
+  if (!n) return { date, dark: dark / 4, nodata: true };
+  const avg = cl / n, ppA = pp / n, freeShare = free / dark;
+  const score = Math.max(0, Math.min(100, Math.round((100 - avg) * (0.45 + 0.55 * freeShare) - ppA * 0.3)));
+  const [lbl, c] = score >= 70 ? ['Excellent', '#16a34a'] : score >= 50 ? ['Good', '#0ea5e9'] : score >= 30 ? ['Fair', '#f59e0b'] : ['Poor', '#ef4444'];
+  return { date, a: first, b: last, darkH: dark / 4, freeH: free / 4, avg, low: low / n, pp: ppA, ill, score, lbl, c, hours, full: n * 4 >= dark * 0.9 };
+}
+const cloudCol = v => v < 20 ? '#16a34a' : v < 50 ? '#84cc16' : v < 75 ? '#f59e0b' : '#ef4444';
+/* ---------- terrain-aware sunrise / sunset (Open-Meteo elevation, ~90 m DEM) ---------- */
+const terrainCache = new Map();
+function refractDeg(h) { return h > -1 ? 1.02 / Math.tan((h + 10.3 / (h + 5.11)) * Math.PI / 180) / 60 : 0.57; }
+async function terrainTimes(l) {
+  const tz = tzOf(l), key = `${l.lat.toFixed(4)},${l.lng.toFixed(4)},${state.sun.date}`;
+  if (terrainCache.has(key)) return terrainCache.get(key);
+  const t = SunCalc.getTimes(sunDay(tz), l.lat, l.lng); if (isNaN(t.sunrise) || isNaN(t.sunset)) return null;
+  const azAt = d => bearing(SunCalc.getPosition(d, l.lat, l.lng).azimuth);
+  const dists = [0.3, 0.6, 1, 1.5, 2, 3, 4, 6, 8, 11, 15, 20].map(k => k * 1000);
+  const side = (t0, t1) => { const a0 = azAt(t0), a1 = azAt(t1), dir = ((a1 - a0 + 540) % 360 - 180) >= 0 ? 1 : -1; return [-3, 0, 4, 8, 12, 17, 23, 30, 38, 47, 60].map(o => (a0 + dir * o + 360) % 360); };
+  const riseAz = side(t.sunrise, new Date(t.sunrise.getTime() + 2 * 36e5)), setAz = side(t.sunset, new Date(t.sunset.getTime() - 2 * 36e5));
+  const pts = [[l.lat, l.lng]], map_ = [];
+  for (const [k, azs] of [['r', riseAz], ['s', setAz]]) for (const az of azs) for (const d of dists) { map_.push({ k, az, d }); pts.push(dest(l.lat, l.lng, az, d)); }
+  const get = async list => (await (await fetch(`https://api.open-meteo.com/v1/elevation?latitude=${list.map(p => p[0].toFixed(5)).join(',')}&longitude=${list.map(p => p[1].toFixed(5)).join(',')}`)).json()).elevation;
+  const ele = [];
+  for (let i = 0; i < pts.length; i += 100) ele.push(...await get(pts.slice(i, i + 100)));
+  const e0 = ele[0] + 1.6, hz = { r: {}, s: {} };
+  map_.forEach((m, i) => { const e = ele[i + 1]; if (e == null) return; const ang = Math.atan2(e - 0.87 * m.d * m.d / 12742000 - e0, m.d) * 180 / Math.PI; hz[m.k][m.az] = Math.max(hz[m.k][m.az] ?? -2, ang); });
+  const horizon = (k, az) => { const list = Object.entries(hz[k]).map(([a, v]) => [+a, v]); let best = null, bd = 1e9; for (const [a, v] of list) { const dd = Math.abs(((az - a + 540) % 360) - 180); if (dd < bd) { bd = dd; best = v; } } return best ?? 0; };
+  const vis = d => { const p = SunCalc.getPosition(d, l.lat, l.lng), h = p.altitude * 180 / Math.PI; return h + refractDeg(h) + 0.27 >= horizon(d < t.solarNoon ? 'r' : 's', bearing(p.azimuth)); };
+  let rise = null, set = null;
+  for (let m = -20; m <= 300; m++) { const d = new Date(t.sunrise.getTime() + m * 6e4); if (d > t.solarNoon) break; if (vis(d)) { rise = d; break; } }
+  for (let m = 20; m >= -300; m--) { const d = new Date(t.sunset.getTime() + m * 6e4); if (d < t.solarNoon) break; if (vis(d)) { set = d; break; } }
+  const res = { rise, set, flatRise: t.sunrise, flatSet: t.sunset, hR: horizon('r', azAt(t.sunrise)), hS: horizon('s', azAt(t.sunset)), azR: azAt(t.sunrise), azS: azAt(t.sunset) };
+  terrainCache.set(key, res); return res;
+}
+/* ---------- rainbow chance (showers + low sun behind you) ---------- */
+function rainbowChance(s) {
+  const w = s.wx; if (!w?.H) return null;
+  const H = w.H, tz = tzOf(s);
+  const toD = iso => { const b = Date.parse(iso + ':00Z'); return new Date(b - tzOffsetMin(tz, new Date(b)) * 6e4); };
+  for (let k = 0; k < 18 && w.start + k < H.time.length; k++) {
+    const i = w.start + k, code = H.weather_code[i], showery = (code >= 80 && code <= 82) || (code >= 51 && code <= 65) || (H.precipitation_probability?.[i] || 0) >= 45;
+    if (!showery || H.cloud_cover[i] > 85) continue;
+    const d = new Date(toD(H.time[i]).getTime() + 18e5), p = SunCalc.getPosition(d, s.lat, s.lng), alt = p.altitude * 180 / Math.PI;
+    if (alt < 1 || alt > 40) continue;
+    const anti = (bearing(p.azimuth) + 180) % 360;
+    return { t: H.time[i].slice(11, 16), anti, top: 42 - alt, day: H.time[i].slice(0, 10) === w.cur.time.slice(0, 10) ? 'today' : 'tomorrow' };
+  }
+  return null;
+}
+/* ---------- drone rules by country ---------- */
+const DRONE = {
+  us: ['FAA B4UFLY', 'https://www.faa.gov/uas/getting_started/b4ufly'], gb: ['UK CAA drone rules', 'https://www.caa.co.uk/drones/'],
+  ca: ['NRC drone site selection tool', 'https://nrc.canada.ca/en/drone-tool/'], au: ['CASA drone safety apps', 'https://www.casa.gov.au/knowyourdrone/drone-safety-apps'],
+  nz: ['Airshare map', 'https://www.airshare.co.nz/maps'], de: ['DFS dipul map', 'https://maptool-dipul.dfs.de/'], fr: ['Géoportail drone restrictions', 'https://www.geoportail.gouv.fr/donnees/restrictions-pour-drones-de-loisir'],
+  es: ['ENAIRE Drones map', 'https://drones.enaire.es/'], it: ['D-Flight', 'https://www.d-flight.it/'],
+};
+const EU = 'at be bg hr cy cz dk ee fi gr hu ie lv lt lu mt nl pl pt ro sk si se is no li ch'.split(' ');
+function droneLink(cc) {
+  if (DRONE[cc]) return DRONE[cc];
+  if (EU.includes(cc)) return ['EASA: national drone authorities', 'https://www.easa.europa.eu/en/domains/drones-air-mobility/naa'];
+  return cc ? ['Search local drone rules', `https://www.google.com/search?q=${encodeURIComponent('drone no fly zone map ' + cc.toUpperCase())}`] : null;
+}
+/* ---------- ND filter / long exposure ---------- */
+const SHUTTERS = [1/8000, 1/4000, 1/2000, 1/1000, 1/500, 1/250, 1/125, 1/60, 1/30, 1/15, 1/8, 1/4, 1/2, 1, 2, 4, 8, 15, 30];
+const fmtShut = t => t < 1 ? `1/${Math.round(1 / t)}` : t < 60 ? `${+t.toFixed(t < 10 ? 1 : 0)} s` : t < 3600 ? `${Math.floor(t / 60)} min ${Math.round(t % 60)} s` : `${(t / 3600).toFixed(1)} h`;
+/* ---------- EXIF: GPS + date + direction from a JPEG ---------- */
+function readExif(buf) {
+  const v = new DataView(buf); if (v.getUint16(0) !== 0xFFD8) return null;
+  let o = 2;
+  while (o < v.byteLength - 4) {
+    const mk = v.getUint16(o), len = v.getUint16(o + 2);
+    if (mk === 0xFFE1 && v.getUint32(o + 4) === 0x45786966) {
+      const t0 = o + 10, le = v.getUint16(t0) === 0x4949, u16 = x => v.getUint16(x, le), u32 = x => v.getUint32(x, le);
+      const size = { 1: 1, 2: 1, 3: 2, 4: 4, 5: 8, 7: 1, 9: 4, 10: 8 };
+      const ifd = off => { const out = {}, n = u16(t0 + off); for (let i = 0; i < n; i++) {
+        const e = t0 + off + 2 + i * 12, tag = u16(e), type = u16(e + 2), cnt = u32(e + 4), sz = (size[type] || 1) * cnt, at = sz > 4 ? t0 + u32(e + 8) : e + 8;
+        let val;
+        if (type === 2) { val = ''; for (let k = 0; k < cnt - 1; k++) val += String.fromCharCode(v.getUint8(at + k)); }
+        else if (type === 5 || type === 10) { val = []; for (let k = 0; k < cnt; k++) { const a = type === 5 ? u32(at + k * 8) : v.getInt32(at + k * 8, le), b = type === 5 ? u32(at + k * 8 + 4) : v.getInt32(at + k * 8 + 4, le); val.push(b ? a / b : 0); } }
+        else if (type === 3) val = u16(at); else if (type === 4) val = u32(at); else val = v.getUint8(at);
+        out[tag] = val; } return out; };
+      const i0 = ifd(u32(t0 + 4)), res = {};
+      if (i0[0x8769]) { const ex = ifd(i0[0x8769]); res.date = ex[0x9003] || ex[0x9004]; }
+      res.date ||= i0[0x0132];
+      if (i0[0x8825]) {
+        const g = ifd(i0[0x8825]), dms = a => Array.isArray(a) ? a[0] + (a[1] || 0) / 60 + (a[2] || 0) / 3600 : null;
+        const lat = dms(g[2]), lng = dms(g[4]);
+        if (lat != null && lng != null && (lat || lng)) { res.lat = g[1] === 'S' ? -lat : lat; res.lng = g[3] === 'W' ? -lng : lng; }
+        if (Array.isArray(g[17])) res.dir = Math.round(g[17][0]) % 360;
+      }
+      return res;
+    }
+    if ((mk & 0xFF00) !== 0xFF00) break;
+    o += 2 + len;
+  }
+  return null;
+}
+let pendingPhoto = null;
+async function photoToLocation(file) {
+  let ex = null;
+  try { ex = readExif(await file.slice(0, 256 * 1024).arrayBuffer()); } catch {}
+  let src; try { src = await compress(file); } catch { toast('Could not read that image'); return; }
+  const date = ex?.date ? ex.date.replace(/^(\d{4}):(\d\d):(\d\d)/, '$1-$2-$3') : '';
+  const note = [date && `Photo taken ${date}`, ex?.dir != null && `camera facing ${ex.dir}° ${compass(ex.dir)}`].filter(Boolean).join(', ');
+  pendingPhoto = { photo: { id: uid(), src, name: file.name, ts: Date.now() }, note, dir: ex?.dir };
+  if (ex?.lat != null) { setView('map'); map.setView([ex.lat, ex.lng], Math.max(map.getZoom(), 16)); startNew(ex.lat, ex.lng); toast('Found the photo’s location — name it and save'); }
+  else { setView('map'); setAdding(true); toast(/heic|heif/i.test(file.type + file.name) ? 'HEIC photo without readable location — tap the map where it was taken' : 'No GPS in this photo — tap the map where it was taken'); }
+}
+const PTABS = [['overview', 'Overview', 'pin'], ['light', 'Light', 'sun'], ['night', 'Night', 'moon'], ['weather', 'Weather', 'cloud'], ['gear', 'Gear', 'lens'], ['area', 'Area', 'book']];
 function renderSpotDrawer() {
   const s = state.spot; s._seen ||= new Set();
   let shell = drawer.querySelector('.pshell');
@@ -991,7 +1241,7 @@ function renderSpotDrawer() {
     <div style="flex:1;min-width:0;display:grid;gap:3px"><h2>${esc(s.name)}</h2><div class="sub">${esc(s.cat)}${dist}</div>
       ${lp ? `<div class="livechip" style="--lc:${lp.c}"><i></i><span>${esc(lp.txt)}</span></div>` : ''}</div>
     <button class="btn icon ghost" data-act="close" title="Close" aria-label="Close">${icon('x')}</button>`;
-  const busy = { overview: ld.geo, light: false, night: false, weather: ld.wx || ld.marine, area: ld.wiki };
+  const busy = { overview: ld.geo, light: false, night: false, weather: ld.wx || ld.marine, gear: false, area: ld.wiki };
   shell.querySelectorAll('[data-ptab]').forEach((b, i) => {
     const on = b.dataset.ptab === state.ptab;
     b.classList.toggle('on', on); b.setAttribute('aria-selected', on);
@@ -1004,7 +1254,7 @@ function renderSpotDrawer() {
 }
 function renderPane(s, el) {
   const ld = s.loading || {}, ex = s.extra || {}, tab = state.ptab;
-  const ready = { overview: !ld.geo || !!s.region, light: true, night: true, weather: !ld.wx, area: !ld.wiki }[tab];
+  const ready = { overview: !ld.geo || !!s.region, light: true, night: true, weather: !ld.wx, gear: true, area: !ld.wiki }[tab];
   const key = tab + '|' + ready, anim = !s._seen.has(key); s._seen.add(key);
   el.className = 'pane' + (anim ? ' stagger' + (s._slide ? ' slide-' + state.ptabDir : '') : '');
   s._slide = false;
@@ -1028,12 +1278,13 @@ function renderPane(s, el) {
       ${ready ? `<div class="addr">${icon('home')}<div><div class="a1">${esc(parts.slice(0, 3).join(', ') || s.name)}</div><div class="muted small">${esc(s.region)}</div></div></div>` : `<div>${skel(2)}</div>`}
       ${(() => {
         const ni = typeof SunCalc !== 'undefined' ? nightInfo(s) : null, T = d => fmtT(d, tz), g = [];
-        g.push(['camera', '#f59e0b', 'Golden light', best]);
+        const ng = typeof SunCalc !== 'undefined' ? nextGolden(s) : null;
+        g.push(['camera', '#f59e0b', 'Golden light', best, ng ? calBtn(ng[2], ng[0], ng[1], s, 'Golden-hour light') : '']);
         if (ni) g.push(['moon', '#7c3aed', 'Night sky', ni.dark ? `Dark ${T(ni.dark.a)}–${T(ni.dark.b)} · ` + (ni.free && ni.free.b - ni.free.a >= 18e5 ? `moon-free ${T(ni.free.a)}–${T(ni.free.b)}` : `moon ${Math.round(ni.ill.fraction * 100)}% lit`) + (ni.gc ? ' · Milky Way core up' : '') : 'No full darkness tonight (twilight all night)']);
         if (c) { const v = windVerdict(c.wind_gusts_10m); g.push(['wind', v[1], 'Wind', `${Math.round(c.wind_speed_10m)} km/h, gusts ${Math.round(c.wind_gusts_10m)} · ${v[0]}`]); }
         if (s.fog && s.fog.lvl !== 'unlikely') g.push(['fog', '#64748b', 'Fog / mist', `${pretty(s.fog.lvl)} around sunrise ${s.fog.day} (${s.fog.t})`]);
         if (s.marine?.ext?.length) g.push(['wave', '#0284c7', 'Tide', s.marine.ext.slice(0, 2).map(e => `${e.hi ? 'High' : 'Low'} ${e.t}${e.day === 'tomorrow' ? ' (tmrw)' : ''}`).join(' · ')]);
-        return `<div class="glance">${g.map(([ic, col, k, v]) => `<div style="--c:${col}">${icon(ic)}<div><small>${k}</small>${esc(v)}</div></div>`).join('')}</div>`;
+        return `<div class="glance">${g.map(([ic, col, k, v, x]) => `<div style="--c:${col}">${icon(ic)}<div><small>${k}</small>${esc(v)}${x || ''}</div></div>`).join('')}</div>`;
       })()}
       ${(() => {
         const sc = s.next && shootScore(s.next.h);
@@ -1081,11 +1332,35 @@ function renderPane(s, el) {
       <p class="subh" style="margin:0">Night of ${esc(nightOf)} · change date in the Light tab</p>
       <div class="ncard" style="--c:#4338ca"><div class="ni">${icon('star')}</div><div>
         <h5>Darkness</h5>
-        ${ni.dark ? `<div class="big">${T(ni.dark.a)} → ${T(ni.dark.b)}</div><p>Full astronomical darkness · ${hm(ni.dark.b - ni.dark.a)}</p>
+        ${ni.dark ? `<div class="big">${T(ni.dark.a)} → ${T(ni.dark.b)}${calBtn(ni.free && ni.free.b - ni.free.a >= 18e5 ? 'Moon-free dark sky' : 'Dark sky', ni.free && ni.free.b - ni.free.a >= 18e5 ? ni.free.a : ni.dark.a, ni.free && ni.free.b - ni.free.a >= 18e5 ? ni.free.b : ni.dark.b, s, 'Astronomical darkness')}</div><p>Full astronomical darkness · ${hm(ni.dark.b - ni.dark.a)}</p>
           <p>${ni.free && ni.free.b - ni.free.a >= 18e5 ? `Moon-free: <b style="color:var(--ink)">${T(ni.free.a)}–${T(ni.free.b)}</b> (${hm(ni.free.b - ni.free.a)})` : `Moonlight all night (${Math.round(mo.fraction * 100)}% lit) — good for lit landscapes, poor for faint stars`}</p>`
           : `<div class="big">No full darkness</div><p>The sun stays less than 18° below the horizon — twilight all night.</p>`}
         <p><a href="https://www.lightpollutionmap.info/#zoom=9&lat=${s.lat.toFixed(4)}&lon=${s.lng.toFixed(4)}" target="_blank" rel="noopener">Check light pollution here →</a></p>
       </div></div>
+      ${(() => {
+        if (ld.wx) return `<div class="skel" style="height:90px;width:100%;border-radius:14px"></div>`;
+        const nf = nightForecast(s, state.sun.date);
+        if (!nf || nf.none) return '';
+        if (nf.nodata) return `<div class="ncard" style="--c:#0ea5e9"><div class="ni">${icon('cloud')}</div><div><h5>Sky forecast</h5><p>This night is beyond the 4-day cloud forecast.</p></div></div>`;
+        return `<div class="ncard" style="--c:${nf.c}"><div class="ni">${icon('cloud')}</div><div>
+          <h5>Sky tonight · <span style="color:${nf.c}">${nf.lbl} for stars</span></h5>
+          <div class="big">${nf.score}<span class="muted small" style="font-weight:400"> / 100 · avg cloud ${Math.round(nf.avg)}% (low ${Math.round(nf.low)}%)${nf.pp >= 10 ? ` · rain ${Math.round(nf.pp)}%` : ''}</span></div>
+          ${nf.hours.length > 1 ? `<div class="cloudrow">${nf.hours.map(h => `<i style="--c:${cloudCol(h.cc)};height:${Math.max(6, h.cc)}%" title="${h.t}: ${h.cc}% cloud"></i>`).join('')}</div>
+          <div class="cloudrow-l"><span>${nf.hours[0].t}</span><span>cloud cover per hour of darkness</span><span>${nf.hours[nf.hours.length - 1].t}</span></div>` : ''}
+        </div></div>`;
+      })()}
+      ${(() => {
+        if (ld.wx || !s.wx) return '';
+        const tz2 = tzOf(s), today = todayIn(tz2);
+        const list = [0, 1, 2, 3].map(k => { const d = new Date(sunAtD(today, 720, tz2).getTime() + k * 864e5); return nightForecast(s, new Intl.DateTimeFormat('en-CA', { timeZone: tz2 }).format(d)); }).filter(n => n && !n.none && !n.nodata);
+        if (!list.length) return '';
+        const best = list.reduce((m, n) => n.score > m.score ? n : m, list[0]);
+        return `<div><p class="subh">Best nights ahead</p><div class="nights">${list.map(n => `<div class="night ${n === best && n.score >= 30 ? 'best' : ''}" style="--c:${n.c}">
+            <b>${dayLbl(n.date).replace(/,/g, '')}</b>
+            <span class="muted">${Math.round(n.avg)}% cloud · moon ${Math.round(n.ill * 100)}% · ${n.freeH >= 0.5 ? `${n.freeH.toFixed(1)}h moon-free` : 'moonlit'}</span>
+            <span class="sc">${n.score} ${n.lbl}</span></div>`).join('')}</div>
+          <p class="foot" style="margin-top:6px">Combines cloud during darkness with moonlight. Tap a date in the Light tab to plan that night.</p></div>`;
+      })()}
       <div class="ncard" style="--c:#64748b"><div class="ni" style="background:none">${moonSvg(mo.phase, 40)}</div><div>
         <h5>${moonName(mo.phase)} · ${Math.round(mo.fraction * 100)}% lit</h5>
         <p>Moonrise <b style="color:var(--ink)">${ni.mRise ? `${T(ni.mRise.d)}</b> · ${compass(ni.mRise.az)} ${Math.round(ni.mRise.az)}°` : '—</b>'}</p>
@@ -1095,7 +1370,7 @@ function renderPane(s, el) {
         <p class="foot" style="margin-top:6px">Green = darker nights (under 25% lit), best for stars and the Milky Way.</p></div>
       <div class="ncard" style="--c:#a855f7"><div class="ni">${icon('spark')}</div><div>
         <h5>Milky Way core</h5>
-        ${ni.gc ? `<div class="big">${T(ni.gc.a)}–${T(ni.gc.b)}</div><p>Best at ${T(ni.best.d)} · ${Math.round(ni.best.alt)}° high toward ${compass(ni.best.az)} (${Math.round(ni.best.az)}°)${ni.best.moonless ? '' : ' · moon is up'}</p>`
+        ${ni.gc ? `<div class="big">${T(ni.gc.a)}–${T(ni.gc.b)}${calBtn('Milky Way core', ni.gc.a, ni.gc.b, s, `Best at ${T(ni.best.d)}, ${Math.round(ni.best.alt)}° high toward ${compass(ni.best.az)}`)}</div><p>Best at ${T(ni.best.d)} · ${Math.round(ni.best.alt)}° high toward ${compass(ni.best.az)} (${Math.round(ni.best.az)}°)${ni.best.moonless ? '' : ' · moon is up'}</p>`
           : `<div class="big">Not visible</div><p>The galactic core is below ~10° during darkness on this night. It is highest in the night sky around Mar–Sep.</p>`}
       </div></div>
       ${Math.abs(s.lat) >= 45 ? `<div class="ncard" style="--c:#16a34a"><div class="ni">${icon('aurora')}</div><div>
@@ -1121,9 +1396,17 @@ function renderPane(s, el) {
         rows.push([v[0], v[1], `Wind ${Math.round(c.wind_speed_10m)} km/h from ${compass(c.wind_direction_10m ?? 0)}, gusts ${Math.round(c.wind_gusts_10m)} km/h. ${v[2]}.`]);
         if (s.fog) rows.push([pretty(s.fog.lvl), s.fog.lvl === 'likely' ? '#0ea5e9' : s.fog.lvl === 'possible' ? '#64748b' : '#94a3b8',
           `Fog/mist at sunrise ${s.fog.day} (${s.fog.t}): ${s.fog.lvl === 'likely' ? 'great for moody shots' : s.fog.lvl === 'possible' ? 'patchy mist possible' : 'air too dry or windy'} — temp ${Math.round(s.fog.temp)}°, dew point spread ${s.fog.spread.toFixed(1)}°.`]);
+        if (s.air && s.air.aerosol_optical_depth != null) {
+          const a = s.air.aerosol_optical_depth, hz = a < 0.1 ? ['Crisp', '#16a34a', 'very clean air — sharp distant detail, deep blue sky'] : a < 0.3 ? ['Clear', '#0ea5e9', 'normal haze — good distance views'] : a < 0.6 ? ['Hazy', '#f59e0b', 'soft distant detail, warmer red-orange sunsets'] : ['Smoky', '#ef4444', 'heavy haze/dust — flat distance, deep red sun near the horizon'];
+          rows.push([hz[0], hz[1], `Haze (aerosol depth ${a.toFixed(2)}): ${hz[2]}. Air quality ${s.air.european_aqi ?? s.air.us_aqi ?? '—'} AQI.`]);
+        }
         if (kp && kp.now != null) rows.push([kp.now >= 5 ? 'Storm' : 'GPS OK', kp.now >= 5 ? '#ef4444' : '#16a34a', `Geomagnetic Kp ${kp.now.toFixed(1)} — ${kp.now >= 5 ? 'drone GPS may be unreliable' : 'no effect on drone GPS'}.`]);
+        const rb = rainbowChance(s);
+        if (rb) rows.push(['Rainbow', '#a855f7', `Possible around ${rb.t} ${rb.day} — showers with a low sun. Stand with the sun behind you and look ${compass(rb.anti)} (${Math.round(rb.anti)}°); the arc tops out ~${Math.round(rb.top)}° high.`]);
         if (c.dew_point_2m != null && c.temperature_2m - c.dew_point_2m < 2.5) rows.push(['Dew', '#0284c7', 'Near the dew point — lens condensation likely; bring a lens heater or cloth.']);
-        return `<div><p class="subh">Shooting conditions</p><div class="cond">${rows.map(([t, col, txt]) => `<div style="--c:${col}"><span class="tag">${esc(t)}</span><span>${esc(txt)}</span></div>`).join('')}</div></div>`;
+        const dl = droneLink(s.cc);
+        return `<div><p class="subh">Shooting conditions</p><div class="cond">${rows.map(([t, col, txt]) => `<div style="--c:${col}"><span class="tag">${esc(t)}</span><span>${esc(txt)}</span></div>`).join('')}</div>
+          ${dl ? `<p class="foot" style="margin-top:8px">${icon('drone')} Before flying: <a href="${esc(dl[1])}" target="_blank" rel="noopener">${esc(dl[0])} →</a></p>` : ''}</div>`;
       })()}
       ${(() => {
         const H = w.H, i0 = w.start, n = Math.min(24, H.time.length - i0);
@@ -1148,6 +1431,64 @@ function renderPane(s, el) {
         <p style="margin-top:10px">Model estimate, not an official tide table — check local tide times before tidal shoots.</p></div></div>` : ''}
       <p class="foot">High cloud over a clear horizon gives the best colour; thick low cloud blocks the light.</p>`;
     requestAnimationFrame(() => { const v = el.querySelector('#cloudViz'); if (v) drawCloudChart(v, s); });
+  } else if (tab === 'gear') {
+    const g = state.gear, sn = sensorOf(g), hf = fov(g), vf = fov(g, 'h'), tg = targets.get(s.id), geo = tg ? tgtGeom(s, tg) : null;
+    const f = g.focal, N = g.ap, c = sn.coc, H = (f * f) / (N * c) / 1000 + f / 1000; // hyperfocal, metres
+    const sd = g.focus, near = sd * (H - f / 1000) / (H + sd - 2 * f / 1000), far = sd < H ? sd * (H - f / 1000) / (H - sd) : Infinity;
+    const npf = (35 * N + 30 * sn.pitch) / f, r500 = 500 / (f * sn.crop);
+    const moonPct = 0.52 / hf * 100;
+    const focusPos = Math.round(Math.log(sd / 0.3) / Math.log(300 / 0.3) * 100);
+    el.innerHTML = `
+      <div class="gform">
+        <label>Camera<select id="gSensor">${Object.entries(SENSORS).map(([k, v]) => `<option value="${k}" ${k === g.sensor ? 'selected' : ''}>${v.n}</option>`).join('')}</select></label>
+        <label>Focal (mm)<input id="gFocal" type="number" min="4" max="1200" step="1" value="${f}" inputmode="numeric" list="focalList"></label>
+        <label>Aperture<select id="gAp">${[1.4, 1.8, 2, 2.8, 4, 5.6, 8, 11, 16, 22].map(a => `<option ${a === N ? 'selected' : ''}>${a}</option>`).join('')}</select></label>
+        <datalist id="focalList">${[14, 16, 20, 24, 28, 35, 50, 70, 85, 100, 135, 200, 300, 400, 600].map(v => `<option value="${v}">`).join('')}</datalist>
+      </div>
+      <div class="ncard" style="--c:#16a34a"><div class="ni">${icon('lens')}</div><div>
+        <h5>Field of view</h5><div class="big">${hf.toFixed(0)}° × ${vf.toFixed(0)}°</div>
+        <p>At 100 m the frame is ${fmtM(2 * 100 * Math.tan(hf * Math.PI / 360))} wide × ${fmtM(2 * 100 * Math.tan(vf * Math.PI / 360))} tall.${sn.crop !== 1 ? ` Full-frame equivalent ${Math.round(f * sn.crop)} mm.` : ''}</p>
+        <p>${state.face != null ? `Shown on the map as the green wedge facing ${state.face}° ${compass(state.face)}.` : 'Set a shot direction in the Light tab to see this wedge on the map.'}</p>
+      </div></div>
+      ${geo ? `<div class="ncard" style="--c:#16a34a"><div class="ni">${icon('target')}</div><div>
+        <h5>Your landmark · ${fmtM(geo.d)} away</h5>
+        <p>Frame at that distance: ${fmtM(2 * geo.d * Math.tan(hf * Math.PI / 360))} wide × ${fmtM(2 * geo.d * Math.tan(vf * Math.PI / 360))} tall.</p>
+        ${tg.h ? `<p>${(() => { const pc = Math.atan(tg.h / geo.d) * 180 / Math.PI / vf * 100; return pc > 100 ? `A ${tg.h} m tall subject overfills the frame (${Math.round(pc)}% of its height) — zoom out or step back.` : `A ${tg.h} m tall subject fills ${Math.round(pc)}% of the frame height.`; })()} For a third of the frame use ~${Math.round(focalFor(g, Math.atan(tg.h / geo.d) * 180 / Math.PI * 3, 'h'))} mm.</p>` : '<p>Add the landmark height in the Light tab to see how big it appears.</p>'}
+      </div></div>` : ''}
+      <div class="ncard" style="--c:#0ea5e9"><div class="ni">${icon('eye')}</div><div style="flex:1;min-width:0">
+        <h5>Depth of field</h5>
+        <div class="row"><input type="range" id="gFocus" min="0" max="100" step="1" value="${focusPos}" aria-label="Focus distance"><b style="flex:none;min-width:64px;text-align:right">${fmtM(sd)}</b></div>
+        <p>Sharp from <b style="color:var(--ink)">${fmtM(near)}</b> to <b style="color:var(--ink)">${fmtM(far)}</b></p>
+        <p>Hyperfocal: focus at <b style="color:var(--ink)">${fmtM(H)}</b> → sharp from ${fmtM(H / 2)} to ∞ <button class="btn ghost sm" id="gHyper" style="padding:0 6px">Use</button></p>
+      </div></div>
+      <div class="ncard" style="--c:#4338ca"><div class="ni">${icon('star')}</div><div>
+        <h5>Star photos · longest shutter</h5>
+        <div class="big">${npf.toFixed(1)} s <span class="muted small" style="font-weight:400">NPF (pin-sharp)</span></div>
+        <p>${r500.toFixed(0)} s by the 500 rule (slight trailing). Wide and fast lenses work best: f/2.8 or faster, ISO 3200–6400.${g.sensor === 'phone' ? ' Phones: use Night mode on a tripod instead.' : ''}</p>
+      </div></div>
+      <div class="ncard" style="--c:#64748b"><div class="ni" style="background:none">${moonSvg(0.5, 40)}</div><div>
+        <h5>Moon &amp; sun size in frame</h5>
+        <p>At ${f} mm the moon spans <b style="color:var(--ink)">${moonPct < 1 ? moonPct.toFixed(1) : Math.round(moonPct)}%</b> of the frame width.</p>
+        <p>For 10% of the width use ~${Math.round(focalFor(g, 5.2))} mm; for a third, ~${Math.round(focalFor(g, 1.56))} mm.</p>
+      </div></div>
+      <div class="ncard" style="--c:#0f766e"><div class="ni">${icon('wave')}</div><div style="flex:1;min-width:0">
+        <h5>Long exposure · ND filter</h5>
+        <div class="gform" style="grid-template-columns:1fr 1fr">
+          <label>Metered shutter<select id="gBase">${SHUTTERS.map(t => `<option value="${t}" ${Math.abs(t - (g.base ?? 1 / 125)) < 1e-9 ? 'selected' : ''}>${fmtShut(t)}</option>`).join('')}</select></label>
+          <label>ND strength<select id="gNd">${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15].map(n => `<option value="${n}" ${n === (g.nd ?? 10) ? 'selected' : ''}>${n} stops (ND${2 ** n})</option>`).join('')}</select></label>
+        </div>
+        <div class="big" style="margin-top:8px">${fmtShut((g.base ?? 1 / 125) * 2 ** (g.nd ?? 10))}</div>
+        <p>${(g.base ?? 1 / 125) * 2 ** (g.nd ?? 10) > 30 ? 'Longer than 30 s — use Bulb mode with a remote or timer.' : 'Within the camera’s normal shutter range.'} 1–2 s blurs waves; 30 s+ smooths water and streaks clouds.</p>
+      </div></div>
+      <p class="foot">Settings are saved on this device. Depth of field uses a standard circle of confusion for each sensor size.</p>`;
+    const upd = () => { saveGear(); s._seen.add('gear|true'); renderPane(s, el); drawSun(); };
+    el.querySelector('#gSensor').onchange = e => { g.sensor = e.target.value; upd(); };
+    el.querySelector('#gFocal').onchange = e => { const v = +e.target.value; if (v >= 4 && v <= 1200) { g.focal = v; upd(); } };
+    el.querySelector('#gAp').onchange = e => { g.ap = +e.target.value; upd(); };
+    el.querySelector('#gFocus').oninput = e => { g.focus = +(0.3 * Math.pow(1000, +e.target.value / 100)).toPrecision(2); clearTimeout(el._ft); el._ft = setTimeout(upd, 60); };
+    el.querySelector('#gHyper').onclick = () => { g.focus = +H.toPrecision(3); upd(); };
+    el.querySelector('#gBase').onchange = e => { g.base = +e.target.value; upd(); };
+    el.querySelector('#gNd').onchange = e => { g.nd = +e.target.value; upd(); };
   } else {
     if (!ready) { el.innerHTML = `<div>${skel(1)}<div class="skel" style="height:140px;width:100%"></div>${skel(3)}</div>`; return; }
     const wikiTag = ex.wikipedia && /^(\w+):(.+)$/.exec(ex.wikipedia);
@@ -1160,13 +1501,14 @@ function renderPane(s, el) {
       ${s.nearby?.length > 1 ? `<div><p class="subh">Nearby</p><div class="nearby">${s.nearby.slice(0, 8).map(n => `<button data-act="goto" data-lat="${n.lat}" data-lng="${n.lng}">${icon('pin')}<span>${esc(n.title)}</span><span class="muted">${fmtDist(n.dist / 1000)}</span></button>`).join('')}</div></div>` : ''}`;
   }
 }
-async function saveSpot(s) {
+async function saveSpot(s, plan = null) {
   const l = { ...blank(s.lat, s.lng), name: s.name, address: s.address || s.region || '', tz: tzOf(s),
     tags: [s.kind === 'place' ? s.cat.split(' · ').pop().toLowerCase() : s.cat.toLowerCase(), s.kind === 'viewpoint' ? 'viewpoint' : ''].filter(Boolean),
     notes: [s.best && `Best light: ${s.best}`, s.tip, s.ele && `Elevation: ${s.ele} m`, s.wiki && `${s.wiki.title}: ${s.wiki.extract}`].filter(Boolean).join('\n'), spotId: s.kind === 'place' ? null : s.id };
   placeLayer.clearLayers();
+  if (plan) l.plan = plan;
   delete l._new; state.locations.push(l); await save(l);
-  state.spot = null; select(l.id, { pan: false }); toast('Saved to My locations');
+  state.spot = null; select(l.id, { pan: false }); toast(plan ? 'Saved with your shoot plan' : 'Saved to My locations');
 }
 
 /* ---------- OSM viewpoints (Overpass API) ---------- */
@@ -1264,7 +1606,7 @@ function renderList() {
       <div style="min-width:0;display:grid;gap:3px">
         <h3>${esc(l.name)}</h3>
         <div class="meta">${esc([l.type, l.project].filter(Boolean).join(' · ') || l.address || '')}${dist}</div>
-        <div class="row" style="justify-content:flex-start;gap:8px"><span class="pill" style="--c:${s.c};flex:none">${s.label}</span><span class="stars" style="flex:none">${starStr(l.rating)}</span>${l.photos?.length ? `<span class="meta" style="flex:none">${l.photos.length} 📷</span>` : ''}</div>
+        <div class="row" style="justify-content:flex-start;gap:8px"><span class="pill" style="--c:${s.c};flex:none">${s.label}</span><span class="stars" style="flex:none">${starStr(l.rating)}</span>${l.plan ? `<span class="meta" style="flex:none">📅 ${esc(l.plan.date.slice(5))}</span>` : ''}${l.photos?.length ? `<span class="meta" style="flex:none">${l.photos.length} 📷</span>` : ''}</div>
       </div></div>`;
   }).join('');
 }
@@ -1273,10 +1615,19 @@ function renderAll() { renderChips(); renderList(); renderMarkers(); }
 
 /* ---------- drawer ---------- */
 const drawer = $('#drawer');
+function applyPlan(l) {
+  const p = l.plan; if (!p) return;
+  if (p.date) state.sun.date = p.date; if (p.min != null) state.sun.min = p.min; if (p.face != null) state.face = p.face;
+  if (p.target) {
+    const tg = { ...p.target, eleC: null, eleT: null }; targets.set(l.id, tg);
+    fetch(`https://api.open-meteo.com/v1/elevation?latitude=${l.lat},${tg.lat}&longitude=${l.lng},${tg.lng}`).then(r => r.json())
+      .then(j => { [tg.eleC, tg.eleT] = j.elevation || []; if (state.sel === l.id && state.mode === 'view') renderDrawer(); }).catch(() => {});
+  }
+}
 function select(id, { pan = true } = {}) {
   if (state.mode === 'edit') cancelEdit(false);
   const l = byId(id);
-  if (l && id !== state.sel) { const tz = tzOf(l); state.sun.date = todayIn(tz); state.sun.min = nowMinIn(tz); state.face = null; }
+  if (l && id !== state.sel) { const tz = tzOf(l); state.sun.date = todayIn(tz); state.sun.min = nowMinIn(tz); state.face = null; if (l.plan) applyPlan(l); }
   state.sel = id; state.spot = null; state.mode = 'view'; placeLayer.clearLayers();
   renderList(); renderMarkers(); renderDrawer();
   if (l && pan) {
@@ -1335,6 +1686,12 @@ function renderDrawer() {
           <button class="btn sm" data-act="share">${icon('copy')}Copy summary</button>
         </div>
       </div>
+      ${l.plan ? (() => { const p = l.plan, tz = tzOf(l), at = sunAtD(p.date, p.min ?? 720, tz), tg = p.target;
+        return `<div class="sec"><h4>Shoot plan</h4><div class="plan">
+          <b>${at.toLocaleDateString([], { weekday: 'short', day: 'numeric', month: 'short', timeZone: tz })} · ${fmtT(at, tz)}${calBtn('Shoot: ' + l.name, at, new Date(at.getTime() + 36e5), l, [p.face != null && `Facing ${p.face}° ${compass(p.face)}`, p.focal && `${p.focal} mm f/${p.ap}`].filter(Boolean).join(', '))}</b>
+          <span class="muted">${[p.face != null && `Facing ${p.face}° ${compass(p.face)}`, p.focal && `${p.focal} mm · f/${p.ap} · ${(SENSORS[p.sensor] || SENSORS.ff).n}`, tg && `Landmark ${fmtM(haversine([l.lat, l.lng], [tg.lat, tg.lng]) * 1000)} away${tg.h ? `, ${tg.h} m tall` : ''}`].filter(Boolean).join(' · ')}</span>
+          <div class="actions" style="margin-top:6px"><button class="btn sm" data-act="open-plan">Load plan into Sun &amp; light</button><button class="btn sm ghost" data-act="clear-plan">Clear plan</button></div>
+        </div></div>`; })() : ''}
       <div class="sec" id="sunSec"></div>
       <div class="sec">
         <h4>Logistics</h4>
@@ -1379,6 +1736,12 @@ function todayIn(tz) { return new Intl.DateTimeFormat('en-CA', { timeZone: tz, y
 const bearing = az => ((az * 180 / Math.PI) + 180 + 360) % 360;
 const compass = b => ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'][Math.round(b / 22.5) % 16];
 // minutes-of-day in the location's time zone -> absolute Date
+function sunAtD(date, min, tz) {
+  const [y, m, d] = date.split('-').map(Number);
+  const base = Date.UTC(y, m - 1, d) + min * 60000;
+  return new Date(base - tzOffsetMin(tz, new Date(base)) * 60000);
+}
+const isoHour = (d, tz) => new Date(Math.floor((d.getTime() + tzOffsetMin(tz, d) * 6e4) / 36e5) * 36e5).toISOString().slice(0, 13) + ':00';
 function sunAt(min, tz) {
   const [y, m, d] = state.sun.date.split('-').map(Number);
   const base = Date.UTC(y, m - 1, d) + min * 60000;
@@ -1424,10 +1787,13 @@ function renderSun(l) {
       ${tm('#7dd3fc', 'Solar noon', T(t.solarNoon))}
       ${tm('#94a3b8', 'Daylight', isNaN(dayLen) ? '—' : `${Math.floor(dayLen / 36e5)}h ${Math.round(dayLen % 36e5 / 6e4)}m`)}
     </div>
+    <div class="ncard" id="terrainOut" style="--c:#15803d;margin-top:16px"><div class="ni">${icon('mountain')}</div><div><h5>Terrain sunrise &amp; sunset</h5><p>Checking hills and mountains on the horizon…</p></div></div>
     <div class="planner">
       <p class="subh">Shot direction</p>
-      <div class="row"><input type="range" id="faceDeg" min="0" max="355" step="5" value="${state.face ?? (Math.round(bearing(set.azimuth) / 5) * 5 % 360 || 0)}" aria-label="Camera facing direction"><b id="faceLbl" style="flex:none;min-width:86px;text-align:right"></b></div>
+      <div class="row"><input type="range" id="faceDeg" min="0" max="359" step="1" value="${state.face ?? (Math.round(bearing(set.azimuth) / 5) * 5 % 360 || 0)}" aria-label="Camera facing direction"><b id="faceLbl" style="flex:none;min-width:86px;text-align:right"></b></div>
       <div id="faceOut" style="margin-top:12px"></div>
+      <div id="tgtBox" style="margin-top:12px"></div>
+      <button class="btn sm" data-act="save-plan" style="margin-top:12px">${icon('cal')}Save as shoot plan</button>
       <p class="foot" style="margin-top:10px">Set which way the camera points (green line on the map). Shows when your subject is front-lit, side-lit or backlit on this date, and the dates the sun rises or sets right along your line of view.</p>
     </div>
     <p class="foot" style="margin-top:14px">Times in ${esc(tz.replace(/_/g, ' '))}${tz === DEVICE_TZ ? ' (your device)' : ''}. Drag the timeline to see the sun's position and shadows.</p>`;
@@ -1438,7 +1804,53 @@ function renderSun(l) {
   if (state.face == null) state.face = +$('#faceDeg').value;
   let ft; $('#faceDeg').oninput = e => { state.face = +e.target.value; updateFace(l, true); clearTimeout(ft); ft = setTimeout(() => updateFace(l), 120); };
   updateFace(l);
+  renderTarget(l);
+  renderTerrain(l);
   updateSunNow(l);
+}
+async function renderTerrain(l) {
+  const box = $('#terrainOut'); if (!box) return;
+  const date = state.sun.date, tz = tzOf(l), T = d => fmtT(d, tz);
+  let r = null; try { r = await terrainTimes(l); } catch {}
+  if (!box.isConnected || state.sun.date !== date) return;
+  if (!r) { box.querySelector('p').textContent = 'Terrain check unavailable.'; return; }
+  const line = (lbl, flat, real, h, az, rise) => {
+    if (!real) return `<p><b style="color:var(--ink)">${lbl}: blocked</b> — terrain hides the sun ${rise ? 'until after the morning' : 'all evening'} (horizon ${h.toFixed(1)}° to the ${compass(az)}).</p>`;
+    const diff = Math.round((real - flat) / 6e4);
+    return Math.abs(diff) <= 2 ? `<p><b style="color:var(--ink)">${lbl} ${T(real)}</b> · open horizon to the ${compass(az)}</p>`
+      : `<p><b style="color:var(--ink)">${lbl} ${T(real)}</b> · ${Math.abs(diff)} min ${diff > 0 ? 'later' : 'earlier'} than flat ${T(flat)} — horizon ${h.toFixed(1)}° high to the ${compass(az)}</p>`;
+  };
+  box.querySelector('div:last-child').innerHTML = `<h5>Terrain sunrise &amp; sunset</h5>
+    ${line('Sun clears terrain', r.flatRise, r.rise, r.hR, r.azR, true)}${line('Sun drops behind terrain', r.flatSet, r.set, r.hS, r.azS, false)}
+    <p class="foot" style="margin-top:6px">From ~90 m terrain data up to 20 km away. Trees and buildings aren't included.</p>`;
+}
+function renderTarget(l) {
+  const box = $('#tgtBox'); if (!box) return;
+  const tg = targets.get(l.id), tz = tzOf(l), T = d => fmtT(d, tz);
+  if (!tg) {
+    box.innerHTML = `<button class="btn sm" data-act="pick-target">${icon('target')}Line up the sun or moon with a landmark…</button>
+      <p class="foot" style="margin-top:6px">Pick a landmark on the map — a peak, tower, arch — to find when the sun or moon sits right behind it.</p>`;
+    return;
+  }
+  const g = tgtGeom(l, tg);
+  box.innerHTML = `<div class="tcard">
+      <div class="row" style="justify-content:space-between"><b style="flex:none">${icon('target')} Landmark · ${fmtM(g.d)} · ${Math.round(g.brg)}° ${compass(g.brg)}</b><button class="btn ghost sm" data-act="clear-target" style="flex:none">Clear</button></div>
+      <div class="muted small">${tg.eleC != null ? `Ground: you ${Math.round(tg.eleC)} m, landmark ${Math.round(tg.eleT)} m · ` : 'Getting elevations… · '}${g.ang != null ? `sight line ${g.ang >= 0 ? '+' : ''}${g.ang.toFixed(2)}° above horizontal` : ''}</div>
+      <div class="row"><label style="flex:none">Landmark height above ground</label><input id="tgtH" type="number" min="0" max="3000" step="1" value="${tg.h || 0}" inputmode="numeric" style="max-width:90px"><span class="muted small" style="flex:none">m</span></div>
+      <div id="luOut"><p class="muted small" style="margin:0">${g.ang == null ? 'Waiting for elevation data…' : 'Searching the next 90 days…'}</p></div>
+    </div>`;
+  $('#tgtH').onchange = e => { tg.h = Math.max(0, +e.target.value || 0); renderTarget(l); };
+  if (g.ang == null) return;
+  setTimeout(() => {
+    const out = $('#luOut'); if (!out) return;
+    const lu = lineUp(l, tg); if (!lu) return;
+    const row = x => `<div><span>${x.body === 'sun' ? '☀️' : moonSvg(SunCalc.getMoonIllumination(x.t).phase, 20)}</span>
+      <span><b>${fmtDay(x.t, tz)} · ${T(x.t)}</b><br><span class="muted small">${x.body === 'sun' ? 'Sun' : `Moon ${Math.round(x.frac * 100)}% lit`} · ${x.alt.toFixed(1)}° high · ${Math.abs(x.off) < .15 ? 'dead centre' : `${Math.abs(x.off).toFixed(1)}° ${x.off > 0 ? 'above' : 'below'} the top`}</span></span>
+      ${calBtn(`${x.body === 'sun' ? 'Sun' : 'Moon'} behind landmark`, new Date(x.t.getTime() - 15 * 6e4), new Date(x.t.getTime() + 15 * 6e4), l, `Look ${Math.round(g.brg)}° ${compass(g.brg)}, ${fmtM(g.d)} away`)}</div>`;
+    out.innerHTML = lu.hits.length
+      ? `<p class="subh" style="margin:4px 0 6px">Lines up · next 90 days</p><div class="lu">${lu.hits.slice(0, 8).map(row).join('')}</div>`
+      : `<p class="small" style="margin:0">No exact line-ups in the next 90 days.</p>${lu.near.length ? `<p class="subh" style="margin:8px 0 6px">Closest passes</p><div class="lu">${lu.near.map(row).join('')}</div>` : '<p class="muted small" style="margin:4px 0 0">The sun and moon never pass this bearing at a usable height from here — try another spot.</p>'}`;
+  }, 30);
 }
 function updateFace(l, quick = false) {
   const out = $('#faceOut'), lbl = $('#faceLbl'); if (!out) return;
@@ -1512,10 +1924,17 @@ function drawSun() {
   };
   ray(t.sunrise, '#e0a100', '6 6');
   ray(t.sunset, '#a855f7', '6 6');
-  if (state.face != null && (!state.spot || state.ptab === 'light')) {
-    const f = state.face;
+  if (state.face != null && (!state.spot || ['light', 'gear'].includes(state.ptab))) {
+    const f = state.face, half = Math.min(85, fov(state.gear) / 2);
+    const arc = []; for (let a = -half; a <= half + 0.01; a += Math.max(1, half / 12)) arc.push(dest(l.lat, l.lng, f + a, R * 1.05));
+    L.polygon([[l.lat, l.lng], ...arc], { color: '#16a34a', weight: 1, opacity: .7, fillOpacity: .12, dashArray: '3 5', interactive: false }).addTo(sunLayer);
     L.polyline([[l.lat, l.lng], dest(l.lat, l.lng, f, R * 1.2)], { color: '#16a34a', weight: 3.5, interactive: false }).addTo(sunLayer);
-    for (const o of [-25, 25]) L.polyline([[l.lat, l.lng], dest(l.lat, l.lng, f + o, R * 1.05)], { color: '#16a34a', weight: 1.5, dashArray: '3 5', opacity: .8, interactive: false }).addTo(sunLayer);
+  }
+  const tg = targets.get(l.id);
+  if (tg && (!state.spot || ['light', 'gear'].includes(state.ptab))) {
+    L.polyline([[l.lat, l.lng], [tg.lat, tg.lng]], { color: '#16a34a', weight: 2, dashArray: '8 6', interactive: false }).addTo(sunLayer);
+    L.circleMarker([tg.lat, tg.lng], { radius: 9, color: '#16a34a', weight: 3, fillColor: '#fff', fillOpacity: .9, interactive: false }).addTo(sunLayer);
+    L.circleMarker([tg.lat, tg.lng], { radius: 3, color: '#16a34a', weight: 0, fillColor: '#16a34a', fillOpacity: 1, interactive: false }).addTo(sunLayer);
   }
   const at = sunAt(state.sun.min, tz), p = SunCalc.getPosition(at, l.lat, l.lng);
   if (p.altitude > 0) {
@@ -1535,6 +1954,7 @@ function startNew(lat, lng) {
   if (state.mode === 'edit') cancelEdit(false);
   state.sel = null; placeLayer.clearLayers(); state.spot = null;
   state.draft = blank(lat, lng); state.draft.tz = DEVICE_TZ; state.mode = 'edit';
+  if (pendingPhoto) { const pp = pendingPhoto; pendingPhoto = null; state.draft.photos.push(pp.photo); state.draft.cover = pp.photo.id; state.draft.notes = pp.note || ''; if (pp.dir != null) state.draft.plan = { date: todayIn(DEVICE_TZ), min: nowMinIn(DEVICE_TZ), face: pp.dir }; }
   renderList(); renderMarkers(); renderEditor(); placeTemp();
   map.panTo([lat, lng]);
   fetchTz(lat, lng).then(tz => {
@@ -1648,7 +2068,7 @@ async function commitEdit(f) {
   const i = state.locations.findIndex(l => l.id === d.id);
   if (i >= 0) state.locations[i] = d; else state.locations.push(d);
   await save(d);
-  state.sel = d.id; state.mode = 'view'; state.draft = null;
+  state.sel = d.id; state.mode = 'view'; state.draft = null; if (isNew && d.plan) applyPlan(d);
   if (tempMarker) { tempMarker.remove(); tempMarker = null; }
   renderAll(); renderDrawer();
   toast(isNew ? 'Location saved' : 'Changes saved');
@@ -1716,11 +2136,23 @@ function switchTab(k) {
 drawer.addEventListener('click', async e => {
   const pt = e.target.closest('[data-ptab]');
   if (pt) return switchTab(pt.dataset.ptab);
+  const cb = e.target.closest('[data-cal]'); if (cb) { const ev = calReg.get(cb.dataset.cal); if (ev) downloadIcs(ev); return; }
   const ph = e.target.closest('[data-photo]'); if (ph) return openLB(state.sel, ph.dataset.photo);
   const b = e.target.closest('[data-act]'); if (!b) return;
   const l = state.spot || byId(state.sel);
   switch (b.dataset.act) {
     case 'save-spot': saveSpot(state.spot); break;
+    case 'save-plan': {
+      const tg = targets.get(l.id);
+      const plan = { date: state.sun.date, min: state.sun.min, face: state.face, focal: state.gear.focal, sensor: state.gear.sensor, ap: state.gear.ap, target: tg ? { lat: tg.lat, lng: tg.lng, h: tg.h || 0 } : null };
+      if (state.spot) await saveSpot(state.spot, plan);
+      else { l.plan = plan; l.updated = Date.now(); await save(l); renderList(); renderDrawer(); toast('Shoot plan saved'); }
+      break;
+    }
+    case 'clear-plan': delete l.plan; l.updated = Date.now(); await save(l); renderList(); renderDrawer(); break;
+    case 'open-plan': if (l.plan) { applyPlan(l); renderDrawer(); } break;
+    case 'pick-target': startPick(l); break;
+    case 'clear-target': targets.delete(l.id); rerenderLight(); drawSun(); break;
     case 'share-place': {
       const url = location.href, text = `${l.name} — ${l.lat.toFixed(5)}, ${l.lng.toFixed(5)}`;
       if (navigator.share && matchMedia('(pointer:coarse)').matches) { navigator.share({ title: l.name, text, url }).catch(() => {}); }
@@ -1826,6 +2258,9 @@ function setAdding(on) {
 $('#btnAdd').onclick = () => { setView('map'); setAdding(!state.adding); };
 $('#addCancel').onclick = () => setAdding(false);
 $('#addHere').onclick = () => locate(([la, ln]) => startNew(la, ln));
+$('#addPhoto').onclick = () => $('#exifFile').click();
+$('#exifFile').onchange = e => { const f = e.target.files[0]; e.target.value = ''; if (f) photoToLocation(f); };
+$('#addCancel').addEventListener('click', () => { pendingPhoto = null; });
 
 /* ---------- sidebar events ---------- */
 $('#q').addEventListener('input', e => { state.filter.q = e.target.value; renderList(); renderMarkers(); });
@@ -1907,6 +2342,7 @@ document.addEventListener('keydown', e => {
     if (PTABS[i]) { switchTab(PTABS[i][0]); drawer.querySelector(`[data-ptab="${PTABS[i][0]}"]`)?.focus(); }
     return;
   }
+  if (e.key === 'Escape' && state.picking) { stopPick(); return; }
   if (e.key === 'Escape') { if (state.adding) setAdding(false); else if (state.mode === 'edit') cancelEdit(); else if (state.sel || state.spot) closeDrawer(); }
 });
 
